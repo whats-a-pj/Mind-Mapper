@@ -1,0 +1,7 @@
+//this is where we will require ALL of our packages and routes 
+
+//set up our handlebars custom helpers
+
+//tell express what template engine we are using
+
+//do our sequelize sync with app.listen etc
