@@ -5,3 +5,5 @@
 //tell express what template engine we are using
 
 //do our sequelize sync with app.listen etc
+
+//quick test to make sure our github pull request rules work-
