@@ -22,3 +22,14 @@
 //       }
 //     },
 //   };
+
+// will only server as auth for login page 
+const withAuth = (req, res, next) => {
+  if (!req.session.logged_in) {
+    res.redirect('/login');
+  } else {
+    next();
+  }
+};
+
+module.exports = withAuth;
