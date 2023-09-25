@@ -7,10 +7,10 @@
 //module.exports = router;
 
 const router = require('express').Router();
-const profileRoutes = require('./profileRoutes');
+const profileRoutes = require('./userRoutes');
 const mindMapRoutes = require('./mindMapRoutes'); //update
 
-router.use('/users', profileRoutes);
-router.use('/projects', mindMapRoutes);
+router.use('/user', profileRoutes);
+router.use('/mindMaps', mindMapRoutes);
 
 module.exports = router;
