@@ -21,7 +21,7 @@ router.get('./', async (req, res) => {
 			include: [
 				{
 					model: MindMap,
-					attributes: ['mindMap'] //may need to update
+					attributes: ['mindmap'] //may need to update
 				}
 			]
 		});
@@ -46,7 +46,7 @@ router.get('./mindMap/:id', async (req, res) => {
 		include: [
 			{
 				model: User,
-				attributes: ['mindMap'] //may also req change
+				attributes: ['mindmap'] // may change based on seeds file 
 			}
 		]
 	});
