@@ -1,0 +1,1 @@
+//put event handling for views/handlebars files here?? don't think it needs to just be the login handler but if so- we need more js files r.i.p.

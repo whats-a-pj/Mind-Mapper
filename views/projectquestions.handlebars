@@ -1,1 +1,33 @@
-<!--AFTER USER CLICKS THE NEW PROJECT BUTTON, THIS IS THE QUESTION PAGE-->
+<!--AFTER USER CLICKS THE NEW PROJECT BUTTON IN dashboard.handlebars file, THIS IS THE QUESTION PAGE-->
+<div class="questions">
+    <div class="project-title">
+        <h3>What is the name of your project?</h3>
+        <form>
+            <input type="text" id="title" placeholder="Example Title"><button><span>Submit</span></button>
+        </form>
+    </div>
+    <div class="checkbox-instructions">
+        <h3>Check all that you would like to include in your mind map:</h3>
+    </div>
+    <div class="checkbox-questions">
+        <div id="user-story-q">
+            <input type="checkbox"><!--{{#if checked}} helpers that will populate input form and add button??--><span class="checkmark"></span>Acceptance Criteria
+        </div>
+        <div id="pkgs-q">
+            <input type="checkbox"><!--{{#if checked}}--><span class="checkmark"></span>Packages Needed
+        </div>
+        <div id="resources-q">
+            <input type="checkbox"><!--{{#if checked}}--><span class="checkmark"></span>Resources
+        </div>
+        <div id="notes-q">
+            <input type="checkbox"><!--{{#if checked}}--><span class="checkmark"></span>Notes/Tips
+        </div>
+        <div id="wireframe-q">
+            <input type="checkbox"><!--{{#if checked}}--><span class="checkmark"></span>Link to Wireframe
+        </div>
+        <div id="code-snippet-q">
+            <input type="checkbox"><!--{{#if checked}}--><span class="checkmark"></span>Code Snippets
+        </div>
+    </div>
+    <div class="create"><button>CREATE</button></div>
+</div>
