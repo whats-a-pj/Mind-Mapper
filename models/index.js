@@ -1,14 +1,14 @@
 //create the connection between our models here
 const User = require('./User');
-const Project = require('./Project');
+const MindMap = require('./MindMap');
 
-User.hasMany(Project, {
+User.hasMany(MindMap, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE',
 });
 
-Project.belongsTo(User, {
+MindMap.belongsTo(User, {
     foreignKey: 'user_id',
 });
 
-module.exports = { User, Project };
+module.exports = { User, MindMap };
