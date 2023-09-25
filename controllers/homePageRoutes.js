@@ -1,11 +1,5 @@
-//require express
-// require ALL models
-// get and render() routes here
-
-//module.exports = router
-
 const router = require('express').Router(); 
-const { TODO, USERTODO } = require('../models'); //REPLACE TODO WITH ACTUAL MODELS THEN UPDATE MODELS BELOW
+const { MindMap, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 // if logged in redirect back to dash
@@ -20,17 +14,14 @@ router.get('/login', (req, res) => {
 });
 
 
-module.exports = router;
-
-//find all mindmaps - not sure if we want a search all, or if we would rather just have a find all by user after login
-// can also work in all of the get functions with withAuth to make any action require a login/create login
+//pulling all user mindmaps
 router.get('./', async (req, res) => {
 	try {
-		const mindMapData = await TODO.findAll({
+		const mindMapData = await MindMap.findAll({
 			include: [
 				{
-					model: TODO,
-					attributes: ['name'] //may need to update based on model data and seeds data
+					model: MindMap,
+					attributes: ['mindMap'] //may need to update
 				}
 			]
 		});
@@ -39,7 +30,7 @@ router.get('./', async (req, res) => {
 			mindMap.get({ plain: true })
 		);
 
-		res.render('dashBoard', {
+		res.render('dashboard', {
 
 			userMindMap,
 			logged_in: req.session.logged_in
@@ -50,12 +41,12 @@ router.get('./', async (req, res) => {
 });
 // will need to add var in our js file to assign the ID's to the mindmap title etc 
 router.get('./mindMap/:id', async (req, res) => {
-	const mindMapDataById = await USERTODO.findByPk(req.params.id, {
-		//replace USERTODO
+	const mindMapDataById = await User.findByPk(req.params.id, {
+		
 		include: [
 			{
-				model: USERTODO,
-				attributes: ['name'] //may also req change
+				model: User,
+				attributes: ['mindMap'] //may also req change
 			}
 		]
 	});
@@ -69,9 +60,9 @@ router.get('./mindMap/:id', async (req, res) => {
 
 router.get('/dashboard', withAuth, async (req, res) => { 
     try {
-    const userProfile = await TODOUSER.findByPk(req.session.user_id, {
+		const userProfile = await User.findByPk(req.session.user_id, {
         attributes: { exclude: ['password'] },
-        include: [{model: TODO}]
+        include: [{model: MindMap}]
     })
     
     const profileData = userProfile.get({ plain: true });
@@ -84,3 +75,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
         res.status(500).json(err)
     }
 })
+
+
+
+module.exports = router;
