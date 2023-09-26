@@ -1,16 +1,8 @@
-//const router = require('express').Router();
-
-//require/import all routes inside ./api here || ex. const userRoutes = require('./userRoutes');
-
-//router.use('/userRoutes', userRoutes);
-
-//module.exports = router;
-
 const router = require('express').Router();
-const profileRoutes = require('./userRoutes');
-const mindMapRoutes = require('./mindMapRoutes'); //update
+const userRoutes = require('./userRoutes');
+const mindMapRoutes = require('./mindMapRoutes'); 
 
-router.use('/user', profileRoutes);
-router.use('/mindMaps', mindMapRoutes);
+router.use('/users', userRoutes);
+router.use('/mindmaps', mindMapRoutes);
 
 module.exports = router;
