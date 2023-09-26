@@ -1,19 +1,28 @@
 //do we need to require projectquestions.handlebars so it targets THOSE specific checkboxes?
-var checkBox = document.querySelectorAll("checkbox");
+//todo we need to move the id's for these (in the handlebars file) from the divs to the actual checkbox inputs- my bad lol
+var projectTitle = document.getElementById('#project-title');
+var userStoryCheck = document.getElementById("#user-story-q");
+var pkgCheck = document.getElementById("#pkgs-q");
+var resourceCheck = document.getElementById("#resources-q");
+var notesCheck = document.getElementById("#notes-q");
+var wireFrameCheck = document.getElementById("#wireframe-q");
+var codeSnippetCheck = document.getElementById("#code-snippet-q");
 
-for (var i = 0; i < checkBox.length; i++) {
-  checkBox[i].addEventListener("onchange", function() {
-    const textArea = document.createElement('textarea');
-    textArea.name = 'Type your message here';
-    textArea.rows = 4;
-    textArea.cols = 50;
-    document.body.appendChild(textArea);
-    const userInput = textArea.value;
-    //do we need a route here to add this to the db or do we need 
-    //to create an event listener for each checkbox so that the inputs
-    //direct themselves to the right pages?
-  });
-}
+
+
+if (userStoryCheck.checked) {
+    function generateUserStory() {
+    const formEl = document.createElement('form');
+        formEl.setAttribute("method", "POST");
+        formEl.setAttribute("action", /* "userstory.handlebars" */);
+    const textAreaEl = document.createElement('textarea');
+        textAreaEl.name = 'Type your message here';
+        textAreaEl.rows = 4;
+        textAreaEl.cols = 50;
+        document.body.appendChild(textAreaEl);
+    const userInput = textAreaEl.value;
+
+}} //else if ()
 
 
 
@@ -25,18 +34,33 @@ for (var i = 0; i < checkBox.length; i++) {
 
 // }};
 
+//var checkBox = document.querySelectorAll("checkbox");
+// for (var i = 0; i < checkBox.length; i++) {
+//     checkBox[i].addEventListener("onchange", function() {
+//       const formEl = document.createElement('form');
+//       formEl.setAttribute("method", "POST");
+//       formEl.setAttribute("action", "example.handlebars");
+//       const textAreaEl = document.createElement('textarea');
+//       textAreaEl.name = 'Type your message here';
+//       textAreaEl.rows = 4;
+//       textAreaEl.cols = 50;
+//       document.body.appendChild(textAreaEl);
+//       const userInput = textAreaEl.value;
 
-// document.querySelector("#user-story-q").addEventListener('checkbox', /*function*/)
+//     });
+//   }
 
-// document.querySelector("#pkgs-q").addEventListener('checkbox', /*function*/)
+// document.getElementById("#user-story-q").addEventListener('checkbox', /*function*/)
 
-// document.querySelector("#resources-q").addEventListener('checkbox', /*function*/)
+// document.getElementById("#pkgs-q").addEventListener('checkbox', /*function*/)
 
-// document.querySelector("#notes-q").addEventListener('checkbox', /*function*/)
+// document.getElementById("#resources-q").addEventListener('checkbox', /*function*/)
 
-// document.querySelector("#wireframe-q").addEventListener('checkbox', /*function*/)
+// document.getElementById("#notes-q").addEventListener('checkbox', /*function*/)
 
-// document.querySelector("#code-snippet-q").addEventListener('checkbox', /*function*/)
+// document.getElementById("#wireframe-q").addEventListener('checkbox', /*function*/)
+
+// document.getElementById("#code-snippet-q").addEventListener('checkbox', /*function*/)
 
 // function generatePassword() {
 //     var length = +lengthEl.value;
