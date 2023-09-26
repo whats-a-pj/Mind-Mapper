@@ -5,8 +5,8 @@
         "password": "example-this-will-be-hashed"
     },
     {
-        "name": "Example",
-        "email": "example@email.com",
-        "password": "example-this-will-be-hashed"
+        "name": "Example2",
+        "email": "example1@email.com",
+        "password": "example-this-will-be-hashed1"
     }
 ]
