@@ -5,19 +5,19 @@ const { MindMap, User } = require('../models');
 // if logged in redirect back to dash
 //test section
 
-router.get('./', async (req, res) => {
-	try {
-		const mindMapData = await MindMap.findAll({
-			include: [{	model: User}]
-		});
-		console.log(mindMapData)
+// router.get('./', async (req, res) => {
+// 	try {
+// 		const mindMapData = await MindMap.findAll({
+// 			include: [{	model: User}]
+// 		});
+// 		console.log(mindMapData)
 
 
 
-	} catch (err) {
-		res.status(500).json(err);
-	}
-});
+// 	} catch (err) {
+// 		res.status(500).json(err);
+// 	}
+// });
 
 // router.get('/login', (req, res) => {
 

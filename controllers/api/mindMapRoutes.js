@@ -2,26 +2,98 @@ const router = require('express').Router();
 const { MindMap, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.get('./', async (req, res) => {
+//router tests
+router.get('/', async (req, res) => {
     try {
         const mindMapData = await MindMap.findAll({
             include: [{ model: User }]
         });
-        console.log(mindMapData)
-
-
-
+        // console.log(mindMapData)
+        res.status(200).json(mindMapData);
     } catch (err) {
         res.status(500).json(err);
     }
 });
 
+router.get('/:id', async (req, res) => {
+    try {
+        const mindMapbyId = await MindMap.findByPk(req.params.id, {
+            include: [{ model: User }]
+        });
 
-//pull all maps by user if there are multiple
+        if (!mindMapbyId) {
+            // console.log(mindMapbyId)
+            res.status(404).json({ message: 'Not found.' });
+            return;
+        }
+        res.status(200).json(mindMapbyId);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.delete('/:id', async (req, res) => {
+    try {
+        const deleteMindMap = await MindMap.destroy({
+            where: { id: req.params.id }
+        });
+        if (!deleteMindMap) {
+            res.status(404).json({ message: 'mindmap not found.' });
+            return;
+        }
+        res.status(200).json(deleteMindMap);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.post('/', async (req, res) => {
+    try {
+        const newMindMap = await MindMap.create(req.body);
+        console.log(newMindMap)
+        res.status(200).json(newMindMap);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+
+})
+
+router.put('/:id', (req, res) => {
+    MindMap.update(
+        {
+            id: req.body.id,
+            title: req.body.title,
+            acceptance_criteria: req.body.acceptance_criteria,
+            pkg_name: req.body.pkg_name,
+            note: req.body.note,
+            snippet: req.body.snippet,
+            wireFrame_link: req.body.wireFrame_link,
+            resourse_name: req.body.resourse_name,
+            user_id: req.body.user_id
+        },
+        {
+            where: {
+                mindmap_id: req.params.mindmap_id,
+            }
+        }
+    )
+        .then((updatedMindMap) => {
+            res.json(updatedMindMap)
+        })
+        .catch((err) => {
+            console.log(err)
+            res.json(err);
+        })
+})
+
+
+// router tests
+
+// pull all maps by user if there are multiple
 // router.get('./', async (req, res) => {
 // 	try {
 // 		const allMindMpaData = await MindMap.findAll({
-// 			include: [{ Model: User }]
+// 			// include: [{ Model: User }]
 // 		});
 // 		const userMindMap = allMindMpaData.map((mindMap) =>
 // 			mindMap.get({ plain: true })
@@ -39,8 +111,8 @@ router.get('./', async (req, res) => {
 //     const codeSnippetsData = await MindMap.findByPk(req.params.id, {
 //         include: [
 //             {
-//                 model: User, 
-//                 attributes: ['name'] 
+//                 model: User,
+//                 attributes: ['name']
 //             }
 //         ]
 //     })
@@ -71,8 +143,6 @@ router.get('./', async (req, res) => {
 //     }
 // })
 
-
 //routes to get notes/packages/proj questions/resources/user story with get/put/post/delete
 
 module.exports = router;
-
