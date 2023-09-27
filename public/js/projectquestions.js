@@ -1,5 +1,4 @@
-//do we need to require projectquestions.handlebars so it targets THOSE specific checkboxes?
-//todo we need to move the id's for these from the divs to the actual checkbox inputs- my bad lol
+var projectTitleCheck = document.getElementById("#project-title");
 var userStoryCheck = document.getElementById("#user-story-q");
 var pkgCheck = document.getElementById("#pkgs-q");
 var resourceCheck = document.getElementById("#resources-q");
@@ -7,31 +6,99 @@ var notesCheck = document.getElementById("#notes-q");
 var wireFrameCheck = document.getElementById("#wireframe-q");
 var codeSnippetCheck = document.getElementById("#code-snippet-q");
 
+//checkbox event listeners
+userStoryCheck.addEventListener('change', (event) => {
+    if (event.currentTarget.checked) {
+        generateTextArea();
+    } else {
 
+    }
+});
 
-if (userStoryCheck.checked) {
-    function generateUserStory() {
-    const formEl = document.createElement('form');
-        formEl.setAttribute("method", "POST");
-        formEl.setAttribute("action", /* "userstory.handlebars" */);
+pkgCheck.addEventListener('change', (event) => {
+    if (event.currentTarget.checked) {
+        generateTextArea();
+    } else {
+
+    }
+});
+
+resourceCheck.addEventListener('change', (event) => {
+    if (event.currentTarget.checked) {
+        generateTextArea();
+    } else {
+
+    }
+});
+
+notesCheck.addEventListener('change', (event) => {
+    if (event.currentTarget.checked) {
+        generateTextArea();
+    } else {
+
+    }
+});
+
+wireFrameCheck.addEventListener('change', (event) => {
+    if (event.currentTarget.checked) {
+        generateTextArea();
+    } else {
+
+    }
+});
+
+codeSnippetCheck.addEventListener('change', (event) => {
+    if (event.currentTarget.checked) {
+        generateTextArea();
+    } else {
+
+    }
+});
+
+//if checkbox is checked => this function will add an input field to the GUI
+function generateTextArea() {
+    // const formEl = document.createElement('form');
+    //     formEl.setAttribute("method", "POST");
+    //     formEl.setAttribute("action", "userstory.handlebars");
     const textAreaEl = document.createElement('textarea');
-        textAreaEl.name = 'Type your message here';
+    const addBtn = document.createElement('button');
+        addBtn.setAttribute('class', 'addBtn');
+        textAreaEl.placeholder = 'Type your message here';
         textAreaEl.rows = 4;
         textAreaEl.cols = 50;
         document.body.appendChild(textAreaEl);
+        document.body.appendChild(addBtn);
+        //todo add ANOTHER eventListener for the addBtn to run this function again
     const userInput = textAreaEl.value;
-
-}} //else if ()
-
-
+    //do something with user input here based on which checkbox is clicked??
+    //
+    // const newFormHandler = async (event) => {
+    //     event.preventDefault();
+      
+    //     const name = document.querySelector('#project-name').value.trim();
+    //     const needed_funding = document.querySelector('#project-funding').value.trim();
+    //     const description = document.querySelector('#project-desc').value.trim();
+      
+    //     if (name && needed_funding && description) {
+    //       const response = await fetch(`/api/projects`, {
+    //         method: 'POST',
+    //         body: JSON.stringify({ name, needed_funding, description }),
+    //         headers: {
+    //           'Content-Type': 'application/json',
+    //         },
+    //       });
+      
+    //       if (response.ok) {
+    //         document.location.replace('/profile');
+    //       } else {
+    //         alert('Failed to create project');
+    //       }
+    //     }
+    //   };
+    //
+};
 
 /***********************************************************************/
-
-//big ole if statement?
-// async function userStoryCheck () {
-// try {
-
-// }};
 
 //var checkBox = document.querySelectorAll("checkbox");
 // for (var i = 0; i < checkBox.length; i++) {
@@ -40,7 +107,7 @@ if (userStoryCheck.checked) {
 //       formEl.setAttribute("method", "POST");
 //       formEl.setAttribute("action", "example.handlebars");
 //       const textAreaEl = document.createElement('textarea');
-//       textAreaEl.name = 'Type your message here';
+//       textAreaEl.placeholder = 'Type your message here';
 //       textAreaEl.rows = 4;
 //       textAreaEl.cols = 50;
 //       document.body.appendChild(textAreaEl);
@@ -48,34 +115,3 @@ if (userStoryCheck.checked) {
 
 //     });
 //   }
-
-// document.getElementById("#user-story-q").addEventListener('checkbox', /*function*/)
-
-// document.getElementById("#pkgs-q").addEventListener('checkbox', /*function*/)
-
-// document.getElementById("#resources-q").addEventListener('checkbox', /*function*/)
-
-// document.getElementById("#notes-q").addEventListener('checkbox', /*function*/)
-
-// document.getElementById("#wireframe-q").addEventListener('checkbox', /*function*/)
-
-// document.getElementById("#code-snippet-q").addEventListener('checkbox', /*function*/)
-
-// function generatePassword() {
-//     var length = +lengthEl.value;
-//     var hasLower = lowercaseEl.checked;
-//     var hasUpper = uppercaseEl.checked;
-//     var hasNumber = numbersEl.checked;
-//     var hasSymbol = symbolsEl.checked;
-//     //function to pull  pass deets and compare to whether the checkbox is used
-//     let generatedPassword = '';
-//   const typesCount = hasLower + hasUpper + hasNumber + hasSymbol;
-//   if (typesCount === 0) {
-//     return '';
-//   }
-//     const passdeetsArray = [
-//         hasLower && passDeets.lowerCase,
-//         hasUpper && passDeets.upperCase,
-//         hasNumber && passDeets.numbers,
-//         hasSymbol && passDeets.symbols
-//     ].filter(Boolean);
