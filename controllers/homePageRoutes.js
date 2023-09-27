@@ -19,6 +19,7 @@ router.get('./', async (req, res) => {
 	}
 });
 
+//should route to dashboard after login
 router.get('/login', (req, res) => {
 
     if (req.session.logged_in) {
@@ -55,7 +56,7 @@ router.get('./', async (req, res) => {
 		res.status(500).json(err);
 	}
 });
-// will need to add var in our js file to assign the ID's to the mindmap title etc 
+// may need to add var in our js file to assign the ID's to the mindmap title etc 
 router.get('./mindMap/:id', async (req, res) => {
 	const mindMapDataById = await User.findByPk(req.params.id, {
 		
@@ -87,6 +88,24 @@ router.get('/dashboard', withAuth, async (req, res) => {
         ...profileData, 
         logged_in: true
     })
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
+router.get('/codesnippets', withAuth, async (req, res) => {
+    try {
+        const codeSnips = await MindMap.findByPk(req.session.user_id, {
+            attributes: { exclude: ['password'] },
+            include: [{ model: User }]
+        })
+
+        const codeSnippetsData = codeSnips.get({ plain: true });
+
+        res.render('codesnippets', {
+            ...codeSnippetsData,
+            logged_in: true
+        })
     } catch (err) {
         res.status(500).json(err)
     }
