@@ -14,8 +14,9 @@ const profileroutes = async (event) => {
                 'Content-Type': 'application/json',
             }
         })
+        console.log(newMMChoice)
         if (newMMChoice.ok) {
-            document.location.replace('/mindmap')
+            document.location.replace('/dashboard')
         } else {
             alert('unable to load mindmaps')
         }
@@ -28,4 +29,5 @@ const profileroutes = async (event) => {
     }
 
 };
+document.querySelector('loginBtn').addEventListener('submit', profileroutes)
 

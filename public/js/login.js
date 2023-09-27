@@ -4,8 +4,8 @@
 const loginHandler = async (event) => {
     event.preventDefault();
 
-const email = document.querySelector('#login-email').value.trim();
-const password = document.querySelector('#login-pw').value.trim();
+const email = document.querySelector('#email').value.trim();
+    const password = document.querySelector('#password').value.trim();
 
 if (email && password) {
     const response = await fetch('/api/users/login', {
@@ -17,6 +17,7 @@ if (response.ok) {
         document.location.replace('/dashboard');
     } else {
         alert(response.statusText);
+        
     }}
 };
 
@@ -43,5 +44,5 @@ if (name && email && password) {
     }
 };
 
-document.querySelector('.login').addEventListener('button', loginHandler);
+document.querySelector('.login').addEventListener('loginBtn', loginHandler);
 document.querySelector('.signup').addEventListener('button', signupHandler);
