@@ -1,84 +1,54 @@
 const router = require('express').Router(); 
 const { MindMap, User } = require('../models');
 const withAuth = require('../utils/auth');
+require('express-session');
 
 // if logged in redirect back to dash
 // test section
 
-// router.get('./', async (req, res) => {
-// 	try {
-// 		const mindMapData = await MindMap.findAll({
-// 			include: [{	model: User}]
-// 		});
-// 		console.log(mindMapData)
 
+router.post('/login', (req, res) => {
 
-
-// 	} catch (err) {
-// 		res.status(500).json(err);
-// 	}
-// });
-// should route to dashboard after login
-// router.get('/login', (req, res) => {
-
-//     if (req.session.logged_in) {
-//         res.redirect('/dashboard');
-//         return;
-//     }
-
-//     res.render('dashboard');
-// });
-
-router.get('/login', async (req, res) => {
-    try{
     if (req.session.logged_in) {
-        res.render('dashboard')
-}
-    } catch (err) {
-        res.status(500).json(err);
-    }
-})
+        res.redirect('/login');
+        return;
+	}
+	res.render('dashboard');
 
-router.get('/main', async (req, res) => {
-    try {
-        if (req.session.logged_in) {
-            res.render('dashboard')
-        }
-    } catch (err) {
-        res.status(500).json(err);
-    }
-})
+});
 
 
+
+// TODO FIGURE OUT WHY IT'S ONLY RENDERING THE LOGIN AFTER LOGGING IN
 
 
 
 //pulling all user mindmaps
-router.get('/', async (req, res) => {
-	try {
-		const mindMapData = await MindMap.findAll({
-			include: [
-				{
-					model: MindMap,
-					attributes: ['mindmap'] //may need to update
-				}
-			]
-		});
+// router.get('/', async (req, res) => {
+// 	try {
+// 		const mindMapData = await MindMap.findAll({
+// 			include: [
+// 				{
+// 					model: MindMap,
+// 					attributes: ['mindmap'] //may need to update
+// 				}
+// 			]
+// 		});
 
-		const userMindMap = mindMapData.map((mindMap) =>
-			mindMap.get({ plain: true })
-		);
+// 		const userMindMap = mindMapData.map((mindMap) =>
+// 			mindMap.get({ plain: true })
+// 		);
 
-		res.render('dashboard', {
+// 		res.render('dashboard', {
 
-			userMindMap,
-			logged_in: req.session.logged_in
-		});
-	} catch (err) {
-		res.status(500).json(err);
-	}
-});
-// may need to add var in our js file to assign the ID's to the mindmap title etc 
+// 			userMindMap,
+// 			logged_in: req.session.logged_in
+// 		});
+// 	} catch (err) {
+// 		res.status(500).json(err);
+// 	}
+// });
+// // may need to add var in our js file to assign the ID's to the mindmap title etc 
 // router.get('./mindMap/:id', async (req, res) => {
 // 	const mindMapDataById = await User.findByPk(req.params.id, {
 		
@@ -101,7 +71,7 @@ router.get('/', async (req, res) => {
 //     try {
 // 		const userProfile = await User.findByPk(req.session.user_id, {
 //         attributes: { exclude: ['password'] },
-//         include: [{model: MindMap}]
+//         include: [{model: User}]
 //     })
     
 //     const profileData = userProfile.get({ plain: true });
