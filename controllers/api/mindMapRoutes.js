@@ -73,7 +73,7 @@ router.put('/:id', (req, res) => {
         },
         {
             where: {
-                mindmap_id: req.params.mindmap_id,
+                id: req.params.id,
             }
         }
     )
