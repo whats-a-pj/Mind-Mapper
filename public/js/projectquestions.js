@@ -1,6 +1,5 @@
 //do we need to require projectquestions.handlebars so it targets THOSE specific checkboxes?
-//todo we need to move the id's for these (in the handlebars file) from the divs to the actual checkbox inputs- my bad lol
-var projectTitle = document.getElementById('#project-title');
+//todo we need to move the id's for these from the divs to the actual checkbox inputs- my bad lol
 var userStoryCheck = document.getElementById("#user-story-q");
 var pkgCheck = document.getElementById("#pkgs-q");
 var resourceCheck = document.getElementById("#resources-q");

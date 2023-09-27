@@ -8,11 +8,18 @@ const email = document.querySelector('#login-email').value.trim();
 const password = document.querySelector('#login-pw').value.trim();
 
 if (email && password) {
-
-    //need to send a post req to the api here
-
-}
+    const response = await fetch('/api/users/login', {
+        method: 'POST',
+        body: JSON.stringify({ email, password }),
+        headers: { 'Content-Type': 'application/json' },
+    });
+if (response.ok) {
+        document.location.replace('/dashboard');
+    } else {
+        alert(response.statusText);
+    }}
 };
+
 
 const signupHandler = async (event) => {
     event.preventDefault();
@@ -22,10 +29,18 @@ const email = document.querySelector('#signup-email').value.trim();
 const password = document.querySelector('#signup-pw').value.trim();
 
 if (name && email && password) {
+    const response = await fetch('/api/users', {
+        method: 'POST',
+        body: JSON.stringify({ name, email, password }),
+        headers: { 'Content-Type': 'application/json' },
+    });
 
-    //need to send a post req to api here
-
-}
+    if (response.ok) {
+        document.location.replace('/dashboard');
+    } else {
+        alert(response.statusText);
+    }
+    }
 };
 
 document.querySelector('.login').addEventListener('button', loginHandler);
