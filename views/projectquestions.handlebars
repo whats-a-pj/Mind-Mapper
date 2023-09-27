@@ -1,36 +1,36 @@
 <!--AFTER USER CLICKS THE NEW PROJECT BUTTON IN dashboard.handlebars file, THIS IS THE QUESTION PAGE-->
 <div class="questions">
-    <div class="project-title">
+    <div>
         <h3>What is the name of your project?</h3>
         <form>
-            <input type="text" id="title" placeholder="Example Title"><button><span>Submit</span></button>
+            <input type="text" id="project-title" placeholder="Example Title"><button><span>Submit</span></button>
         </form>
     </div>
     <div class="checkbox-instructions">
         <h3>Check all that you would like to include in your mind map:</h3>
     </div>
     <div class="checkbox-questions">
-        <div id="user-story-q">
-            <input type="checkbox"><!--{{#if checked}}--><span class="checkmark"></span>Acceptance Criteria
+        <div>
+            <input type="checkbox" id="user-story-q"><!--{{#if checked}}--><span class="checkmark"></span>Acceptance Criteria
             <!--helper populates a text area and add button below
                 <form><textarea name="userstory" rows="4" cols="50"></textarea>
                     <br>
                 <input type="submit" value="Add+"></form>-->
         </div>
-        <div id="pkgs-q">
-            <input type="checkbox"><!--{{#if checked}}--><span class="checkmark"></span>Packages Needed
+        <div>
+            <input type="checkbox" id="pkgs-q"><!--{{#if checked}}--><span class="checkmark"></span>Packages Needed
         </div>
-        <div id="resources-q">
-            <input type="checkbox"><!--{{#if checked}}--><span class="checkmark"></span>Resources
+        <div>
+            <input type="checkbox" id="resources-q"><!--{{#if checked}}--><span class="checkmark"></span>Resources
         </div>
-        <div id="notes-q">
-            <input type="checkbox"><!--{{#if checked}}--><span class="checkmark"></span>Notes/Tips
+        <div>
+            <input type="checkbox" id="notes-q"><!--{{#if checked}}--><span class="checkmark"></span>Notes/Tips
         </div>
-        <div id="wireframe-q">
-            <input type="checkbox"><!--{{#if checked}}--><span class="checkmark"></span>Link to Wireframe
+        <div>
+            <input type="checkbox" id="wireframe-q"><!--{{#if checked}}--><span class="checkmark"></span>Link to Wireframe
         </div>
-        <div id="code-snippet-q">
-            <input type="checkbox"><!--{{#if checked}}--><span class="checkmark"></span>Code Snippets
+        <div>
+            <input type="checkbox" id="code-snippet-q"><!--{{#if checked}}--><span class="checkmark"></span>Code Snippets
         </div>
     </div>
     <div class="create"><button>CREATE</button></div>
