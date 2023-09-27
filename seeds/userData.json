@@ -2,11 +2,11 @@
     {
         "name": "Example",
         "email": "example@email.com",
-        "password": "example-this-will-be-hashed"
+        "password": "12345"
     },
     {
         "name": "Example2",
         "email": "example1@email.com",
-        "password": "example-this-will-be-hashed1"
+        "password": "12345"
     }
 ]

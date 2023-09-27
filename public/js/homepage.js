@@ -4,10 +4,10 @@ const profileroutes = async (event) => {
     const getMindMap = document.querySelector('#mind-map') // click into single MM *update based on handlebars
     const editMindMap = document.querySelector('#editMm') // edit display on the dashboard
     const newMindMap = document.querySelector('#newMM') // NEW MM
-    const deleteMindMap = document.querySelector('#deleteMM') // deleye
+    const deleteMindMap = document.querySelector('#deleteMM') // delete
 
     if (getMindMap) {
-        const newMMChoice = await fetch(`api/mindmaps`, {
+        const newMMChoice = await fetch(`api/mindmaps/login`, {
             method: 'GET',
             body: JSON.stringify({ getMindMap }),
             headers: {
