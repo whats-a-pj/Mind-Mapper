@@ -14,20 +14,58 @@ const profileroutes = async (event) => {
                 'Content-Type': 'application/json',
             }
         })
-        console.log(newMMChoice)
         if (newMMChoice.ok) {
-            document.location.replace('/dashboard')
+            document.location.replace('/mindmap')
         } else {
             alert('unable to load mindmaps')
         }
     }
     if (editMindMap) {
         const editMMChoice = await fetch(`api/mindmaps`, {
-            method: 'PUT', 
+            method: 'GET', 
             body: JSON.stringify({ editMindMap }),
+            headers: {
+                'Content-Type': 'application/json',
+            }
         })
+        if (editMMChoice.ok) {
+            document.location.replace('/projectquestions')
+        } else {
+            alert('unable to load mindmaps')
+        }
+    }
+    if (newMindMap) {
+        const newMindMapChoice = await fetch(`api/mindmaps`, {
+            method: 'GET',
+            body: JSON.stringify({ newMindMapChoice }),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+      
+        if (newMindMapChoice.ok) {
+            document.location.replace('/projectquestions')
+        } else {
+            alert('unable to load mindmaps')
+        }
+    }
+    if (deleteMindMap) {
+        const deleteMindMapChoice = await fetch(`api/mindmaps`, {
+            method: 'GET',
+            body: JSON.stringify({ deleteMindMapChoice }),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+
+        if (deleteMindMapChoice.ok) {
+            document.location.replace('/mindmap')
+        } else {
+            alert('unable to load mindmaps')
+        }
     }
 
 };
+
 document.querySelector('loginBtn').addEventListener('submit', profileroutes)
 

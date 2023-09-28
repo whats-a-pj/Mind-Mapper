@@ -1,8 +1,21 @@
 const router = require('express').Router();
-const {  User } = require('../../models');
+const { User, MindMap } = require('../../models');
 
 
 // //test section
+// router.post('/login', async (req, res) => {
+//     try {
+//         const mindMapData = await MindMap.findAll({
+//             include: [{ model: User }]
+//         });
+//         console.log(mindMapData)
+
+
+
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
 
 router.post('/', async (req, res) => {
     try {
@@ -52,13 +65,32 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
-  if (req.session.logged_in) {
-    req.session.destroy(() => {
-      res.status(204).end();
-    });
-  } else {
-    res.status(404).end();
-  }
+    if (req.session.logged_in) {
+        req.session.destroy(() => {
+            res.status(204).end();
+        });
+    } else {
+        res.status(404).end();
+    }
 });
+
+
+router.post('/login', async (req, res) => {
+    try {
+
+        const authenticate = await authenticate(req.body.username, req.body.password);
+        if (authenticate) {
+            req.session.logged_in = true;
+
+            res.redirect('/dashboard');
+        } else {
+            res.render('login', { error: 'Authentication failed' });
+        }
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    }
+});
+
 
 module.exports = router;

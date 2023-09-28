@@ -2,14 +2,29 @@ const router = require('express').Router();
 const { MindMap, User } = require('../models');
 const withAuth = require('../utils/auth');
 
+router.post('/login', async (req, res) => {
+    try {
+        const mindMapData = await MindMap.findAll({
+            include: [{ model: User }]
+        });
+		console.log(mindMapData)
+		res.render('dashboard')
+
+
+
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+
 
 router.get('/', async (req, res) => {
 	try {
-		const mindMapData = await MindMap.findAll({
+		const mindMapData = await User.findAll({
 			include: [
 				{
-					model: User,
-					attributes: ['mindmap'] //may need to update
+					model: MindMap
 				}
 			]
 		});
@@ -28,22 +43,22 @@ router.get('/', async (req, res) => {
 		res.status(500).json(err);
 	}
 });
-router.get('/mindMap/:id', async (req, res) => {
-	const mindMapDataById = await User.findByPk(req.params.id, {
+// router.get('/mindMap/:id', async (req, res) => {
+// 	const mindMapDataById = await User.findByPk(req.params.id, {
 		
-		include: [
-			{
-				model: User,
-				attributes: ['mindmap'] // may change based on seeds file 
-			}
-		]
-	});
-	const mindMapDataByIData = mindMapDataById.get({ plain: true });
-	res.render('mindmap', {
-		...mindMapDataByIData,
-		logged_in: req.session.logged_in
-	});
-});
+// 		include: [
+// 			{
+// 				model: User,
+// 				attributes: ['mindmap'] // may change based on seeds file 
+// 			}
+// 		]
+// 	});
+// 	const mindMapDataByIData = mindMapDataById.get({ plain: true });
+// 	res.render('mindmap', {
+// 		...mindMapDataByIData,
+// 		logged_in: req.session.logged_in
+// 	});
+// });
 
 
 router.get('/dashboard', withAuth, async (req, res) => { 
@@ -55,7 +70,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     
     const profileData = userProfile.get({ plain: true });
     
-    res.render('dashboard', { 
+    res.render('mindmap', { 
         ...profileData, 
         logged_in: true
     })
@@ -71,6 +86,7 @@ router.get('/login', (req, res) => {
 
 	res.render('login');
 });
+
 
 // router.get('/codesnippets', withAuth, async (req, res) => {
 //     try {
