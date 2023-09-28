@@ -1,21 +1,8 @@
 const router = require('express').Router();
-const {  User, MindMap } = require('../../models');
+const {  User } = require('../../models');
 
 
 // //test section
-router.get('/', async (req, res) => {
-    try {
-        const mindMapData = await User.findAll({
-            include: [{ model: MindMap }]
-        });
-        console.log(mindMapData)
-
-
-
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
 
 router.post('/', async (req, res) => {
     try {
