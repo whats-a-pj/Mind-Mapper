@@ -7,7 +7,7 @@ const profileroutes = async (event) => {
     const deleteMindMap = document.querySelector('#deleteMM') // delete
 
     if (getMindMap) {
-        const newMMChoice = await fetch(`api/mindmaps/login`, {
+        const newMMChoice = await fetch(`api/mindmaps`, {
             method: 'GET',
             body: JSON.stringify({ getMindMap }),
             headers: {
