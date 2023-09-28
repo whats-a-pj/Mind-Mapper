@@ -19,35 +19,36 @@ router.post('/login', (req, res) => {
 
 
 
+
 // TODO FIGURE OUT WHY IT'S ONLY RENDERING THE LOGIN AFTER LOGGING IN
 
 
 
 //pulling all user mindmaps
-// router.get('/', async (req, res) => {
-// 	try {
-// 		const mindMapData = await MindMap.findAll({
-// 			include: [
-// 				{
-// 					model: MindMap,
-// 					attributes: ['mindmap'] //may need to update
-// 				}
-// 			]
-// 		});
+router.post('/dashboard', async (req, res) => {
+	try {
+		const mindMapData = await MindMap.findAll({
+			include: [
+				{
+					model: User,
+					attributes: ['mindmap'] //may need to update
+				}
+			]
+		});
 
-// 		const userMindMap = mindMapData.map((mindMap) =>
-// 			mindMap.get({ plain: true })
-// 		);
+		const userMindMap = mindMapData.map((mindMap) =>
+			mindMap.get({ plain: true })
+		);
 
-// 		res.render('dashboard', {
+		res.render('mindmap', {
 
-// 			userMindMap,
-// 			logged_in: req.session.logged_in
-// 		});
-// 	} catch (err) {
-// 		res.status(500).json(err);
-// 	}
-// });
+			userMindMap,
+			logged_in: req.session.logged_in
+		});
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
 // // may need to add var in our js file to assign the ID's to the mindmap title etc 
 // router.get('./mindMap/:id', async (req, res) => {
 // 	const mindMapDataById = await User.findByPk(req.params.id, {
