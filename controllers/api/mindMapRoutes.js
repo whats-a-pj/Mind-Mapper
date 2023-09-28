@@ -63,10 +63,10 @@ router.get('/', async (req, res) => {
         const userMindMap = allMindMpaData.map((mindMap) =>
             mindMap.get({ plain: true })
         );
-        // res.render('dashBoard', {
-        // 	...userMindMap,
-        // 	logged_in: req.session_logged_in
-        // });
+        res.render('mindmap', {
+        	...userMindMap,
+        	logged_in: req.session_logged_in
+        });
         //uncomment when working in the physical page
         res.status(200).json(allMindMpaData);
     } catch (err) {
@@ -85,11 +85,11 @@ router.get('/:id', async (req, res) => {
                 }
             ]
         })
-        // const packages = packagesData.get({ plain: true });
-        // res.render('codesnippets', {title}, {
-        //     ...packages,
-        //     logged_in: req.session.logged_in
-        // });
+        const packages = packagesData.get({ plain: true });
+        res.render('codesnippets', {title}, {
+            ...packages,
+            logged_in: req.session.logged_in
+        });
         //need to re-verify this route after pages build to make sure we can pull that specific mindmap
         res.status(200).json(packagesData)
     } catch (err) {
@@ -101,11 +101,11 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         const newMindMap = await MindMap.create(req.body);
-        // const postNew = newMindMap.get({ plain: true });
-        // res.render('dashboard', {title}, {
-        //     ...postNew,
-        //     logged_in: req.session.logged_in
-        // });
+        const postNew = newMindMap.get({ plain: true });
+        res.render('dashboard', {title}, {
+            ...postNew,
+            logged_in: req.session.logged_in
+        });
         //confirmed working, need to re-verify route once pages finished
         //page should allow the creation of a new MM
 
@@ -120,7 +120,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
 
     try {
-      const updatedMindMap = await MindMap.update(
+        const updatedMindMap = await MindMap.update(
             {
                 id: req.body.id,
                 title: req.body.title,
@@ -138,16 +138,18 @@ router.put('/:id', async (req, res) => {
                 }
 
             })
-            // const updateMm = newMindMap.get({ plain: true });
-            // res.render('dashboard', {title}, {
-            //     ...updateMm,
-        //     logged_in: req.session.logged_in
+        const updateMm = newMindMap.get({ plain: true });
+        res.render('dashboard', { title }, {
+            ...updateMm,
+            logged_in: req.session.logged_in
+
         // code confirmed working, need to double check once page is built.
+    })
         res.status(200).json(updatedMindMap);
-    } catch (err) {
-        res.status(500).json(err);
-        console.error(err)
-    }
+        } catch (err) {
+            res.status(500).json(err);
+            console.error(err)
+        }
 
 });
 
