@@ -5,11 +5,21 @@ const profileroutes = async (event) => {
     const editMindMap = document.querySelector('#editMm') // edit display on the dashboard
     const newMindMap = document.querySelector('#newMM') // NEW MM
     const deleteMindMap = document.querySelector('#deleteMM') // delete
+    const mmlist = document.querySelectorAll('li') //use to post existing MM's
+    const accpCrit = document.querySelector('#accpCrit')
+    const title = document.querySelector('#title')
+    const wireFrame = document.querySelector('wireFrame')
+    const notes = document.querySelector('#notes')
+// consts to pull the mm seed info and push to html pending.
+
+
+    
 
     if (getMindMap) {
-        const newMMChoice = await fetch(`api/mindmaps`, {
+
+        const newMMChoice = await fetch(`api/mindmap`, {
             method: 'GET',
-            body: JSON.stringify({ getMindMap }),
+            body: JSON.stringify({ mmlist }),
             headers: {
                 'Content-Type': 'application/json',
             }
