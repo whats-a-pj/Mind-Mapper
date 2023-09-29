@@ -4,58 +4,9 @@ const withAuth = require('../../utils/auth');
 
 //router tests
 
-
-
-// router.delete('/:id', async (req, res) => {
-//     try {
-//         const deleteMindMap = await MindMap.destroy({
-//             where: { id: req.params.id }
-//         });
-//         if (!deleteMindMap) {
-//             res.status(404).json({ message: 'mindmap not found.' });
-//             return;
-//         }
-//         res.status(200).json(deleteMindMap);
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
-
-
-// router.put('/:id', (req, res) => {
-//     MindMap.update(
-//         {
-//             id: req.body.id,
-//             title: req.body.title,
-//             acceptance_criteria: req.body.acceptance_criteria,
-//             pkg_name: req.body.pkg_name,
-//             note: req.body.note,
-//             snippet: req.body.snippet,
-//             wireFrame_link: req.body.wireFrame_link,
-//             resourse_name: req.body.resourse_name,
-//             user_id: req.body.user_id
-//         },
-//         {
-//             where: {
-//                 id: req.params.id,
-//             }
-//         }
-//     )
-//         .then((updatedMindMap) => {
-//             res.json(updatedMindMap)
-//         })
-//         .catch((err) => {
-//             console.log(err)
-//             res.json(err);
-//         })
-// })
-
-
-// router tests
-
 // pull all maps by user if there are multiple
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
         const allMindMpaData = await MindMap.findAll({
             include: [{ model: User }]
@@ -67,20 +18,21 @@ router.get('/', async (req, res) => {
         	...userMindMap,
         	logged_in: req.session_logged_in
         });
-        //uncomment when working in the physical page
+      
         res.status(200).json(allMindMpaData);
     } catch (err) {
-        // console.error(err)
+
         res.status(500).json(err);
     }
 });
-//pull for just the specific map
-router.get('/:id', async (req, res) => {
+
+router.get('/:id', withAuth, async (req, res) => {
     try {
         const packagesData = await MindMap.findByPk(req.params.id, {
             include: [
                 {
                     model: User,
+                    include: 'name'
 
                 }
             ]
@@ -98,7 +50,7 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
     try {
         const newMindMap = await MindMap.create(req.body);
         const postNew = newMindMap.get({ plain: true });
@@ -117,7 +69,7 @@ router.post('/', async (req, res) => {
 
 })
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
 
     try {
         const updatedMindMap = await MindMap.update(
@@ -138,7 +90,7 @@ router.put('/:id', async (req, res) => {
                 }
 
             })
-        const updateMm = newMindMap.get({ plain: true });
+        const updateMm = updatedMindMap.get({ plain: true });
         res.render('dashboard', { title }, {
             ...updateMm,
             logged_in: req.session.logged_in
@@ -153,9 +105,21 @@ router.put('/:id', async (req, res) => {
 
 });
 
-//pending
 
-
-//routes to get notes/packages/proj questions/resources/user story with get/put/post/delete
+router.delete('/:id', withAuth, async (req, res) => {
+    try {
+        const deleteMindMap = await MindMap.destroy({
+            where: { id: req.params.id }
+        });
+        if (!deleteMindMap) {
+            res.status(404).json({ message: 'mindmap not found.' });
+            return;
+        }
+        //double check if working with insomnia
+        res.status(200).json(deleteMindMap);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 module.exports = router;
