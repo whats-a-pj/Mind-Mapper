@@ -11,24 +11,30 @@
     </div>
     <div class="checkbox-questions">
         <div>
-            <input type="checkbox" id="user-story-q"><span class="checkmark"></span>Acceptance Criteria
-                            <form><textarea name="userstory" rows="4" cols="50"></textarea>
-                    <br>
-                <input type="submit" value="Add+"></form>
+            <h3>Acceptance Criteria</h3>
+                <form id="userStoryForm">
+                    <textarea name="userstory" rows="4" cols="50"></textarea>
+                        <br>
+                    <input type="submit" value="Add+">
+                </form>
         </div>
         <div>
-            <input type="checkbox" id="notes-q"><span class="checkmark"></span>Notes/Tips
-                            <form><textarea name="notes" rows="4" cols="50"></textarea>
-                    <br>
-                <input type="submit" value="Add+"></form>
+            <h3>Notes/Tips</h3>
+                <form id="notesForm">
+                    <textarea name="notes" rows="4" cols="50"></textarea>
+                        <br>
+                    <input type="submit" value="Add+">
+                </form>
         </div>
         <div>
-            <input type="checkbox" id="wireframe-q"><span class="checkmark"></span>Link to Wireframe
-                            <form><textarea name="wireframe" rows="4" cols="50"></textarea>
-                    <br>
-                <input type="submit" value="Add+"></form>
+            <h3>Link to Wireframe</h3>
+                <form id="wireframeForm">
+                    <textarea name="wireframe" rows="4" cols="50"></textarea>
+                        <br>
+                    <input type="submit" value="Add+">
+                </form>
         </div>
     </div>
-    <div class="create"><button>CREATE</button></div>
+    <!--have a button to direct us back to the dashboard with the created mindmap? lmk and i will add an event listener to the js file-->
 </div>
-<!--link js from public-->
+<script src="/public/js/projectquestions.js"></script>
