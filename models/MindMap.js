@@ -16,35 +16,17 @@ MindMap.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        //user story question
         acceptance_criteria: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        //packages question
-        pkg_name: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        //notes question
         note: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        //code snippet question
-        snippet: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        //wireframe question- p much user can just input their link here but idk if link is a datatype lol
         wireframe_link: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        //resources question
-        resource_name: {
-            type: DataTypes.STRING,
-            allowNull: true
         },
         user_id: {
             type: DataTypes.INTEGER,
