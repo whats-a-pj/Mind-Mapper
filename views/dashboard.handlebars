@@ -1,13 +1,98 @@
 
-<div class="dashboard-container">
-    <div>
-        <h2>Previous Mind Maps</h2>
-      
-        {{title}} 
-    </div>
-    <div>
-        <h2>Start New Map</h2><button class="new-map"></button>
-       
+<style>
+        /* Custom CSS for circles */
+        .circle {
+            width: 150px; 
+            height: 150px; 
+            border-radius: 50%; /* Ensure the shape is circular */
+        }
+        .circle:nth-child(2) {
+            margin-top: 150px; 
+        }
+        .sidebar {
+            width: 0;
+            position: fixed;
+            top: 0;
+            right: -250px; /* Start offscreen to the right */
+            height: 100%;
+            background-color: #ff69b4; /* Pink */
+            overflow-x: hidden;
+            transition: 0.3s;
+            z-index: 1;
+        }
+        .sidebar.show {
+            right: 0; /* Slide in from the right */
+        }
+        .sidebar-content {
+            padding: 20px;
+            color: white;
+        }
+        .logout-button {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+        }
+    </style>
 
+<body class="bg-pink-100"> <!-- Background color set to pink -->
+    <div class="min-h-screen flex flex-col justify-center items-center">
+        <!-- Upper Rectangle for User Input -->
+        <div class="bg-pink-300 rounded-lg p-6 shadow-md w-80 text-center text-white"> <!-- Rectangle color set to pink -->
+            <label for="userInput" class="block text-lg font-semibold mb-2">Project Name</label>
+            <input type="text" id="userInput" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-pink-500" placeholder="Type something...">
+        </div>
+
+        <!-- Lower Rectangle with 3 Pink Circles -->
+        <div class="mt-8 flex justify-center space-x-4">
+            
+            <!-- Circle 1 -->
+            <div class="circle bg-pink-400 rounded-full flex items-center justify-center cursor-pointer">
+                <div id="circle1" class="text-white text-center">
+                    <div class="title">Acceptance Criteria</div>
+                    <div class="content hidden"></div>
+                </div>
+            </div>
+            
+            <!-- Circle 2 -->
+            <div class="circle bg-pink-400 rounded-full flex items-center justify-center cursor-pointer">
+                <div id="circle2" class="text-white text-center">
+                    <div class="title">Wireframe</div>
+                    <div class="content hidden"></div>
+                </div>
+            </div>
+
+            <!-- Circle 3 -->
+            <div class="circle bg-pink-400 rounded-full flex items-center justify-center cursor-pointer">
+                <div id="circle3" class="text-white text-center">
+                    <div class="title">Notes</div>
+                    <div class="content hidden"></div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+            <!-- Clickable Icon to Open Sidebar -->
+        <div class="fixed top-0 right-0 m-4 cursor-pointer" onclick="toggleSidebar()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+        </div>
+
+        <!-- Sidebar -->
+        <div id="sidebar" class="sidebar">
+            <div class="sidebar-content">
+                <h2 class="text-2xl font-semibold mb-4">Saved Projects</h2>
+                <!-- List of Saved Projects (Can populate this dynamically) -->
+                <ul>
+                    <li class="mb-2">Project 1</li>
+                    <li class="mb-2">Project 2</li>
+                    <li class="mb-2">Project 3</li>
+                </ul>
+                <!-- Logout Button -->
+                <button class="bg-pink-500 text-white px-4 py-2 mt-4 rounded-md logout-button" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
