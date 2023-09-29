@@ -36,20 +36,17 @@
 
 <body class="bg-pink-100"> <!-- Background color set to pink -->
     <div class="min-h-screen flex flex-col justify-center items-center">
-        <!-- Upper Rectangle for User Input -->
-        <div class="bg-pink-300 rounded-lg p-6 shadow-md w-80 text-center text-white"> <!-- Rectangle color set to pink -->
-            <label for="userInput" class="block text-lg font-semibold mb-2">Project Name</label>
-            <input type="text" id="userInput" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-pink-500" placeholder="Type something...">
-        </div>
 
-        <!-- Lower Rectangle with 3 Pink Circles -->
-        <div class="mt-8 flex justify-center space-x-4">
+        <!-- Upper Rectangle with Placeholder Project Title -->
+        <div class="bg-pink-500 rounded-lg p-6 shadow-md w-80 text-center">
+            <div class="block text-lg font-semibold mb-2 project-title" contenteditable="true" placeholder="Project Title"></div>
+        </div>
             
             <!-- Circle 1 -->
             <div class="circle bg-pink-400 rounded-full flex items-center justify-center cursor-pointer">
                 <div id="circle1" class="text-white text-center">
                     <div class="title">Acceptance Criteria</div>
-                    <div class="content hidden"></div>
+                    <div id="usercriteria"class="content hidden"></div>
                 </div>
             </div>
             
@@ -57,7 +54,7 @@
             <div class="circle bg-pink-400 rounded-full flex items-center justify-center cursor-pointer">
                 <div id="circle2" class="text-white text-center">
                     <div class="title">Wireframe</div>
-                    <div class="content hidden"></div>
+                    <div id="userwireframe"class="content hidden"></div>
                 </div>
             </div>
 
@@ -65,7 +62,7 @@
             <div class="circle bg-pink-400 rounded-full flex items-center justify-center cursor-pointer">
                 <div id="circle3" class="text-white text-center">
                     <div class="title">Notes</div>
-                    <div class="content hidden"></div>
+                    <div id="usernotes" class="content hidden"></div>
                 </div>
             </div>
         </div>
