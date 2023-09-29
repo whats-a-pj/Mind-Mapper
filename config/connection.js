@@ -11,8 +11,8 @@ require('dotenv').config();
 
 let sequelize;
 
-if (process.env.MYSQL) {
-    sequelize = new Sequelize(process.env.MYSQL);
+if (process.env.MYSQL_URL) {
+    sequelize = new Sequelize(process.env.MYSQL_URL);
 } else {
     sequelize = new Sequelize(
         process.env.DB_NAME,
