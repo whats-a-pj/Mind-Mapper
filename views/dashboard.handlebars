@@ -1,57 +1,79 @@
-<!--UPON LOGIN, THIS IS THE USER'S DASHBOARD, with previous projects to the side, mind map example & new project button-->
-<div class="dashboard-container">
-    <div>
-        <h2>Previous Mind Maps</h2>
-      
-        {{title}} 
-    </div>
-    <div>
-        <h2>Start New Map</h2><button class="new-map"></button>
-       
 
-    </div>
-</div> --}}
+<style>
+        /* Custom CSS for circles */
+        .circle {
+            width: 150px; 
+            height: 150px; 
+            border-radius: 50%; /* Ensure the shape is circular */
+        }
+        .circle:nth-child(2) {
+            margin-top: 150px; 
+        }
+        .sidebar {
+            width: 0;
+            position: fixed;
+            top: 0;
+            right: -250px; /* Start offscreen to the right */
+            height: 100%;
+            background-color: #ff69b4; /* Pink */
+            overflow-x: hidden;
+            transition: 0.3s;
+            z-index: 1;
+        }
+        .sidebar.show {
+            right: 0; /* Slide in from the right */
+        }
+        .sidebar-content {
+            padding: 20px;
+            color: white;
+        }
+        .logout-button {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+        }
+    </style>
 
 <body class="bg-pink-100"> <!-- Background color set to pink -->
     <div class="min-h-screen flex flex-col justify-center items-center">
         <!-- Upper Rectangle for User Input -->
-        <div class="bg-pink-500 rounded-lg p-6 shadow-md w-80 text-center text-white"> <!-- Rectangle color set to pink -->
-            <label for="userInput" class="block text-lg font-semibold mb-2">Enter Text:</label>
+        <div class="bg-pink-300 rounded-lg p-6 shadow-md w-80 text-center text-white"> <!-- Rectangle color set to pink -->
+            <label for="userInput" class="block text-lg font-semibold mb-2">Project Name</label>
             <input type="text" id="userInput" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-pink-500" placeholder="Type something...">
         </div>
 
         <!-- Lower Rectangle with 3 Pink Circles -->
         <div class="mt-8 flex justify-center space-x-4">
+            
             <!-- Circle 1 -->
-            <div class="w-16 h-16 bg-pink-500 rounded-full flex items-center justify-center hover:bg-pink-600 transition duration-300 transform hover:scale-110">
-                <span class="text-white">1</span>
+            <div class="circle bg-pink-400 rounded-full flex items-center justify-center cursor-pointer">
+                <div id="circle1" class="text-white text-center">
+                    <div class="title">Acceptance Criteria</div>
+                    <div class="content hidden"></div>
+                </div>
             </div>
             
             <!-- Circle 2 -->
-            <div class="w-16 h-16 bg-pink-500 rounded-full flex items-center justify-center hover:bg-pink-600 transition duration-300 transform hover:scale-110">
-                <span class="text-white">2</span>
+            <div class="circle bg-pink-400 rounded-full flex items-center justify-center cursor-pointer">
+                <div id="circle2" class="text-white text-center">
+                    <div class="title">Wireframe</div>
+                    <div class="content hidden"></div>
+                </div>
             </div>
-            
+
             <!-- Circle 3 -->
-            <div class="w-16 h-16 bg-pink-500 rounded-full flex items-center justify-center hover:bg-pink-600 transition duration-300 transform hover:scale-110">
-                <span class="text-white">3</span>
+            <div class="circle bg-pink-400 rounded-full flex items-center justify-center cursor-pointer">
+                <div id="circle3" class="text-white text-center">
+                    <div class="title">Notes</div>
+                    <div class="content hidden"></div>
+                </div>
             </div>
         </div>
     </div>
-</body>
-
-<body class="bg-gray-100">
-    <div class="min-h-screen flex flex-col justify-center items-center">
-        <!-- Upper Rectangle for User Input -->
-        <div class="bg-white rounded-lg p-6 shadow-md w-80 text-center">
-            <label for="userInput" class="block text-lg font-semibold mb-2">Enter Text:</label>
-            <input type="text" id="userInput" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-pink-500" placeholder="Type something...">
-        </div>
-
-        <!-- Clickable Icon to Open Sidebar -->
+            <!-- Clickable Icon to Open Sidebar -->
         <div class="fixed top-0 right-0 m-4 cursor-pointer" onclick="toggleSidebar()">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
         </div>
 
