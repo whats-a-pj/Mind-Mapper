@@ -1,29 +1,10 @@
 var projectTitleCheck = document.getElementById("#project-title");
-var userStoryCheck = document.getElementById("#user-story-q");
-var pkgCheck = document.getElementById("#pkgs-q");
-var resourceCheck = document.getElementById("#resources-q");
-var notesCheck = document.getElementById("#notes-q");
-var wireFrameCheck = document.getElementById("#wireframe-q");
-var codeSnippetCheck = document.getElementById("#code-snippet-q");
+var userStoryCheck = document.getElementById("#userStoryForm");
+var notesCheck = document.getElementById("#notesForm");
+var wireFrameCheck = document.getElementById("#wireframeForm");
 
 //checkbox event listeners
 userStoryCheck.addEventListener('change', (event) => {
-    if (event.currentTarget.checked) {
-        generateTextArea();
-    } else {
-
-    }
-});
-
-pkgCheck.addEventListener('change', (event) => {
-    if (event.currentTarget.checked) {
-        generateTextArea();
-    } else {
-
-    }
-});
-
-resourceCheck.addEventListener('change', (event) => {
     if (event.currentTarget.checked) {
         generateTextArea();
     } else {
@@ -40,14 +21,6 @@ notesCheck.addEventListener('change', (event) => {
 });
 
 wireFrameCheck.addEventListener('change', (event) => {
-    if (event.currentTarget.checked) {
-        generateTextArea();
-    } else {
-
-    }
-});
-
-codeSnippetCheck.addEventListener('change', (event) => {
     if (event.currentTarget.checked) {
         generateTextArea();
     } else {
