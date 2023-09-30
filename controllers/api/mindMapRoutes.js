@@ -14,7 +14,7 @@ router.get('/', withAuth, async (req, res) => {
         const userMindMap = allMindMpaData.map((mindMap) =>
             mindMap.get({ plain: true })
         );
-        res.render('mindmap', {
+        res.render('dashboard', {
         	...userMindMap,
         	logged_in: req.session_logged_in
         });
@@ -38,7 +38,7 @@ router.get('/:id', withAuth, async (req, res) => {
             ]
         })
         const packages = packagesData.get({ plain: true });
-        res.render('codesnippets', {title}, {
+        res.render('dashboard', {title}, {
             ...packages,
             logged_in: req.session.logged_in
         });
@@ -54,7 +54,7 @@ router.post('/', withAuth, async (req, res) => {
     try {
         const newMindMap = await MindMap.create(req.body);
         const postNew = newMindMap.get({ plain: true });
-        res.render('dashboard', {title}, {
+        res.render('dashboard', title, {
             ...postNew,
             logged_in: req.session.logged_in
         });
