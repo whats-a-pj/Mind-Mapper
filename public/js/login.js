@@ -7,6 +7,7 @@ const loginHandler = async (event) => {
 const email = document.querySelector('#email').value.trim();
     const password = document.querySelector('#password').value.trim();
 
+    console.log(email, password)
 if (email && password) {
     const response = await fetch('/api/users/login', {
         method: 'POST',
@@ -44,5 +45,5 @@ if (name && email && password) {
     }
 };
 
-document.querySelector('.login').addEventListener('loginBtn', loginHandler);
-document.querySelector('.signup').addEventListener('button', signupHandler);
+document.querySelector('#loginBtn').addEventListener('click', loginHandler);
+document.querySelector('.signup').addEventListener('click', signupHandler);

@@ -33,7 +33,7 @@ router.get('/', async (req, res) => {
 			mindMap.get({ plain: true })
 		);
 
-		res.render('dashboard', {
+		res.render('login', {
 
 			userMindMap,
 			logged_in: req.session.logged_in
@@ -62,15 +62,16 @@ router.get('/', async (req, res) => {
 
 
 router.get('/dashboard', withAuth, async (req, res) => { 
+    
     try {
 		const userProfile = await User.findByPk(req.session.user_id, {
         attributes: { exclude: ['password'] },
         include: [{model: MindMap}]
     })
-    
+        console.log(userProfile)
     const profileData = userProfile.get({ plain: true });
     
-    res.render('mindmap', { 
+    res.render('dashboard', { 
         ...profileData, 
         logged_in: true
     })
@@ -88,23 +89,23 @@ router.get('/login', (req, res) => {
 });
 
 
-// router.get('/codesnippets', withAuth, async (req, res) => {
-//     try {
-//         const codeSnips = await MindMap.findByPk(req.session.user_id, {
-//             attributes: { exclude: ['password'] },
-//             include: [{ model: User }]
-//         })
+router.get('/projectquestions', withAuth, async (req, res) => {
+    try {
+        const codeSnips = await MindMap.findByPk(req.session.user_id, {
+            attributes: { exclude: ['password'] },
+            include: [{ model: User }]
+        })
 
-//         const codeSnippetsData = codeSnips.get({ plain: true });
+        const codeSnippetsData = codeSnips.get({ plain: true });
 
-//         res.render('codesnippets', {
-//             ...codeSnippetsData,
-//             logged_in: true
-//         })
-//     } catch (err) {
-//         res.status(500).json(err)
-//     }
-// })
+        res.render('projectquestions', {
+            ...codeSnippetsData,
+            logged_in: true
+        })
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
 
 
 

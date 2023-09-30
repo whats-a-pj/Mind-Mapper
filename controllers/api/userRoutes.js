@@ -2,20 +2,6 @@ const router = require('express').Router();
 const { User, MindMap } = require('../../models');
 
 
-// //test section
-// router.post('/login', async (req, res) => {
-//     try {
-//         const mindMapData = await MindMap.findAll({
-//             include: [{ model: User }]
-//         });
-//         console.log(mindMapData)
-
-
-
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
 
 router.post('/', async (req, res) => {
     try {
@@ -33,6 +19,7 @@ router.post('/', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
+    console.log('ENDPOINT TEST')
     try {
         const userLogin = await User.findOne({ where: { email: req.body.email } });
 
@@ -53,7 +40,7 @@ router.post('/login', async (req, res) => {
         }
 
         req.session.save(() => {
-            req.session.user_id = userLogin.id;
+                     req.session.user_id = userLogin.id;
             req.session.logged_in = true;
 
             res.json({ user: userLogin, message: 'You are now logged in!' });

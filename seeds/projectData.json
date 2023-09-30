@@ -2,10 +2,7 @@
     {
         "title": "exampletime",
         "acceptance_criteria": "Example Project Title",
-        "pkg_name": "This application is a placeholder for real json data",
         "note": "idk if we want to add like the questions inputs here or like maybe the mind maps bubbles lol",
-        "snippet": "snipppet", 
-        "wireframe_link": "link insert", 
-        "resource_name": "example"
+        "wireframe_link": "snipppet"
     }
 ]
