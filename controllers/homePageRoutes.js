@@ -33,7 +33,7 @@ router.get('/', async (req, res) => {
 			mindMap.get({ plain: true })
 		);
 
-		res.render('dashboard', {
+		res.render('login', {
 
 			userMindMap,
 			logged_in: req.session.logged_in
@@ -62,15 +62,16 @@ router.get('/', async (req, res) => {
 
 
 router.get('/dashboard', withAuth, async (req, res) => { 
+    
     try {
 		const userProfile = await User.findByPk(req.session.user_id, {
         attributes: { exclude: ['password'] },
         include: [{model: MindMap}]
     })
-    
+        console.log(userProfile)
     const profileData = userProfile.get({ plain: true });
     
-    res.render('mindmap', { 
+    res.render('dashboard', { 
         ...profileData, 
         logged_in: true
     })
