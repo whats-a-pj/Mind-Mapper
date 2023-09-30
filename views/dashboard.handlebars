@@ -4,10 +4,16 @@
         .circle {
             width: 150px; 
             height: 150px; 
-            border-radius: 50%; /* Ensure the shape is circular */
+            border-radius: 50%;
+            display: inline-block;
+            margin-top: 50px;
+            margin-right: 20px;
+            display: inline-flex; /* Flexbox center content */
+            justify-content: center; /* Horizontally center content */
+            align-items: center; /* Vertically center content */
         }
         .circle:nth-child(2) {
-            margin-top: 150px; 
+            margin-top: 200px; 
         }
         .sidebar {
             width: 0;
@@ -39,9 +45,11 @@
 
         <!-- Upper Rectangle with Placeholder Project Title -->
         <div class="bg-pink-500 rounded-lg p-6 shadow-md w-80 text-center">
-            <div class="block text-lg font-semibold mb-2 project-title" contenteditable="true" placeholder="Project Title"></div>
+            <div class="bg-pink-400 block text-lg font-semibold mb-2 project-title" contenteditable="true"></div>
         </div>
-            
+
+         <!-- Circles Container -->
+        <div class="flex flex-col sm:flex-row lg:space-x-20 md:space-x-10 sm:space-x-5">
             <!-- Circle 1 -->
             <div class="circle bg-pink-400 rounded-full flex items-center justify-center cursor-pointer">
                 <div id="circle1" class="text-white text-center">
@@ -49,15 +57,14 @@
                     <div id="usercriteria"class="content hidden"></div>
                 </div>
             </div>
-            
-            <!-- Circle 2 -->
+
             <div class="circle bg-pink-400 rounded-full flex items-center justify-center cursor-pointer">
                 <div id="circle2" class="text-white text-center">
                     <div class="title">Wireframe</div>
-                    <div id="userwireframe"class="content hidden"></div>
+                    <div id="userwireframe" class="content hidden"></div>
                 </div>
-            </div>
-
+                </div>
+    
             <!-- Circle 3 -->
             <div class="circle bg-pink-400 rounded-full flex items-center justify-center cursor-pointer">
                 <div id="circle3" class="text-white text-center">
