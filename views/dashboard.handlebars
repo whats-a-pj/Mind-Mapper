@@ -11,9 +11,12 @@
             display: inline-flex; /* Flexbox center content */
             justify-content: center; /* Horizontally center content */
             align-items: center; /* Vertically center content */
-        }
-        .circle:nth-child(2) {
-            margin-top: 200px; 
+       
+        /* Apply padding to the second circle on medium and larger screens */
+        @media (min-width: 640px) {
+            .circle:nth-child(2) {
+                margin-top: 200px; 
+            }
         }
         .sidebar {
             width: 0;
