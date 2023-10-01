@@ -1,4 +1,5 @@
 <!--AFTER USER CLICKS THE NEW PROJECT BUTTON IN dashboard.handlebars file, THIS IS THE QUESTION PAGE-->
+<!DOCTYPE html>
 <div class="questions">
     <div>
         <h3>What is the name of your project?</h3>
@@ -38,3 +39,75 @@
     <!--have a button to direct us back to the dashboard with the created mindmap? lmk and i will add an event listener to the js file-->
 </div>
 <script src="/public/js/projectquestions.js"></script>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        @media (min-width: 645px) {
+            .full-screen-container {
+                background-color: #FDE5E5; /* Light pink background */
+                padding-left: 10%;
+                padding-right: 10%;
+                padding-top: 5%;
+                padding-bottom: 5%;
+            }
+        }
+    </style>
+    <title>Mind Map</title>
+</head>
+<body class="bg-pink-100">
+    <div class="bg-pink-500 text-white p-4">
+        <h1 class="text-2xl font-semibold">Create Your Mind Map</h1>
+    </div>
+
+    <div class="container mx-auto mt-4 px-4">
+        <form id="project-title">
+        <div class="bg-pink-200 shadow-md rounded-lg p-4">
+            <label class="text-pink-800 font-semibold">What is the name of your project?</label>
+            <input type="text" class="w-full border rounded-lg p-2 mt-2">
+            <button class="bg-pink-500 hover:bg-pink-600 text-white rounded-lg p-2 mt-2">Submit</button>
+        </div>
+        </form>
+
+        <div class="mt-4">
+            <form id="userStoryForm">
+            <div class="bg-pink-200 shadow-md rounded-lg p-4">
+                <label class="text-pink-800 font-semibold">Acceptance criteria?</label>
+                <input type="text" class="w-full border rounded-lg p-2 mt-2">
+                <button class="bg-pink-500 hover:bg-pink-600 text-white rounded-lg p-2 mt-2">Submit</button>
+            </div>
+            </form>
+        </div>
+
+        <div class="mt-4">
+            <form id="notesForm">
+            <div class="bg-pink-200 shadow-md rounded-lg p-4">
+                <label class="text-pink-800 font-semibold">Notes to self or tips</label>
+                <input type="text" class="w-full border rounded-lg p-2 mt-2">
+                <button class="bg-pink-500 hover:bg-pink-600 text-white rounded-lg p-2 mt-2">Submit</button>
+            </div>
+            </form>
+        </div>
+
+        <div class="mt-4">
+            <form id="wireframeForm">
+            <div class="bg-pink-200 shadow-md rounded-lg p-4">
+                <label class="text-pink-800 font-semibold">Link your wireframe</label>
+                <input type="text" class="w-full border rounded-lg p-2 mt-2">
+                <button class="bg-pink-500 hover:bg-pink-600 text-white rounded-lg p-2 mt-2">Submit</button>
+            </div>
+            </form>
+        </div>
+        <div class="mt-4 text-center">
+          <button class="bg-pink-500 hover:bg-pink-600 text-white rounded-lg p-3 mx-auto block w-1/2">Finish</button>
+        </div>
+    </div>
+
+    <script src="/public/js/projectquestions.js"></script>
+</body>
+</html>
