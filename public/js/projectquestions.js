@@ -1,78 +1,102 @@
-var projectTitleCheck = document.getElementById("#project-title");
-var userStoryCheck = document.getElementById("#userStoryForm");
-var notesCheck = document.getElementById("#notesForm");
-var wireFrameCheck = document.getElementById("#wireframeForm");
+//unsure if i really need to target the form element or not so i commented them out for now.
 
-//checkbox event listeners
-userStoryCheck.addEventListener('change', (event) => {
-    if (event.currentTarget.checked) {
-        generateTextArea();
-    } else {
+//const projectTitleCheck = document.getElementById("#project-titleForm");
+const titleTxtArea = document.getElementById('#inputTitle');
+const titleSubmit = document.getElementById('#submitTitle');
 
-    }
+
+titleSubmit.addEventListener('click', function () {
+
+var userTitle = titleTxtArea.value;
+
+fetch('/submitTitle', {
+    method: 'POST',
+    body: JSON.stringify({ input: userTitle }),
+    headers: {
+        'Content-Type': 'application/json'
+        }
+    })
+//this is to go INTO dashboard
+//console.log(userTitle);
 });
 
-notesCheck.addEventListener('change', (event) => {
-    if (event.currentTarget.checked) {
-        generateTextArea();
-    } else {
+//const userStoryCheck = document.getElementById("#userStoryForm");
+const userStoryTxt = document.getElementById('#inputCriteria');
+const userStorySubmit = document.getElementById('#submitCriteria');
 
-    }
+userStorySubmit.addEventListener('click', function () {
+
+var userStory = userStoryTxt.value;
+
+fetch('/submitUserStory', {
+    method: 'POST',
+    body: JSON.stringify({ input: userStory }),
+    headers: {
+        'Content-Type': 'application/json'
+        }
+    })
 });
 
-wireFrameCheck.addEventListener('change', (event) => {
-    if (event.currentTarget.checked) {
-        generateTextArea();
-    } else {
+//const wireFrameCheck = document.getElementById("#wireframeForm");
+const wireFrameTxt = document.getElementById('#inputWireframe');
+const wireFrameSubmit = document.getElementById('#submitWireframe');
 
-    }
+wireFrameSubmit.addEventListener('click', function () {
+
+var wireFrame = wireFrameTxt.value;
+
+fetch('/submitWireframe', {
+    method: 'POST',
+    body: JSON.stringify({ input: wireFrame }),
+    headers: {
+        'Content-Type': 'application/json'
+        }
+    })
 });
 
-//if checkbox is checked => this function will add an input field to the GUI
-function generateTextArea() {
-    //todo add checkBoxQuestions class to divs in projectquestions.handlebars
-    const checkBoxQuestions = document.getElementsByClassName(/*'checkBoxQuestions'*/);
-    const textAreaEl = document.createElement('textarea');
-    const addBtn = document.createElement('button');
-        addBtn.setAttribute('class', 'addBtn');
-        textAreaEl.placeholder = 'Type your message here';
-        textAreaEl.rows = 4;
-        textAreaEl.cols = 50;
-        //checkBoxQuestions.appendChild(textAreaEl);
-        //document.body.appendChild(textAreaEl);
-        //checkBoxQuestions.appendChild(addBtn);
-        //document.body.appendChild(addBtn);
-        //todo add ANOTHER eventListener for the addBtn to run this function again
-    //const userInput = textAreaEl.value;
-    //do something with user input here based on which checkbox is clicked??
-    //
-    // const newFormHandler = async (event) => {
-    //     event.preventDefault();
-      
-    //     const name = document.querySelector('#project-name').value.trim();
-    //     const needed_funding = document.querySelector('#project-funding').value.trim();
-    //     const description = document.querySelector('#project-desc').value.trim();
-      
-    //     if (name && needed_funding && description) {
-    //       const response = await fetch(`/api/projects`, {
-    //         method: 'POST',
-    //         body: JSON.stringify({ name, needed_funding, description }),
-    //         headers: {
-    //           'Content-Type': 'application/json',
-    //         },
-    //       });
-      
-    //       if (response.ok) {
-    //         document.location.replace('/profile');
-    //       } else {
-    //         alert('Failed to create project');
-    //       }
-    //     }
-    //   };
-    //
-};
+//const notesCheck = document.getElementById("#notesForm");
+const notesTxt = document.getElementById('#inputNotes');
+const notesSubmit = document.getElementById('#submitNotes');
+
+notesSubmit.addEventListener('click', function () {
+
+var notes = userStoryTxt.value;
+
+fetch('/submitNotes', {
+    method: 'POST',
+    body: JSON.stringify({ input: notes }),
+    headers: {
+        'Content-Type': 'application/json'
+        }
+    })
+});
+
+
+
+
 
 /***********************************************************************/
+
+// //checkbox event listeners
+// userStoryCheck.addEventListener('change', (event) => {
+//     if (event.currentTarget.checked) {
+//         generateTextArea();
+//     } else {
+
+//     }
+// });
+
+
+
+// wireFrameCheck.addEventListener('change', (event) => {
+//     if (event.currentTarget.checked) {
+//         generateTextArea();
+//     } else {
+
+//     }
+// });
+
+
 
 //var checkBox = document.querySelectorAll("checkbox");
 // for (var i = 0; i < checkBox.length; i++) {
