@@ -48,7 +48,7 @@
 
         <!-- Upper Rectangle with Placeholder Project Title -->
         <div class="bg-pink-500 rounded-lg p-6 shadow-md w-80 text-center">
-            <div class="bg-pink-400 block text-lg font-semibold mb-2 project-title" contenteditable="true"></div>
+            <div class="bg-pink-400 block text-lg font-semibold mb-2 project-title" contenteditable="true">{{userTitle}}</div>
         </div>
 
          <!-- Circles Container -->
@@ -57,14 +57,14 @@
             <div class="circle bg-pink-400 rounded-full flex items-center justify-center cursor-pointer">
                 <div id="circle1" class="text-white text-center">
                     <div class="title">Acceptance Criteria</div>
-                    <div id="usercriteria"class="content hidden"></div>
+                    <div id="usercriteria"class="content hidden">{{userStory}}</div>
                 </div>
             </div>
 
             <div class="circle bg-pink-400 rounded-full flex items-center justify-center cursor-pointer">
                 <div id="circle2" class="text-white text-center">
                     <div class="title">Wireframe</div>
-                    <div id="userwireframe" class="content hidden"></div>
+                    <div id="userwireframe" class="content hidden">{{wireFrame}}</div>
                 </div>
                 </div>
     
@@ -72,7 +72,7 @@
             <div class="circle bg-pink-400 rounded-full flex items-center justify-center cursor-pointer">
                 <div id="circle3" class="text-white text-center">
                     <div class="title">Notes</div>
-                    <div id="usernotes" class="content hidden"></div>
+                    <div id="usernotes" class="content hidden">{{notes}}</div>
                 </div>
             </div>
         </div>
