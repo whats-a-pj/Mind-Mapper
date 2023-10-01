@@ -78,26 +78,33 @@
         </div>
     </div>
             <!-- Clickable Icon to Open Sidebar -->
-        <div class="fixed top-0 right-0 m-4 cursor-pointer" onclick="toggleSidebar()">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
+<div class="fixed top-0 right-0 m-4 cursor-pointer" onclick="toggleSidebar()">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pink-500">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+    </svg>
+</div>
+
+<!-- Sidebar -->
+<div id="sidebar" class="sidebar fixed top-0 right-0 h-screen bg-gradient-to-b from-pink-200 w-64 overflow-y-auto">
+    <div class="sidebar-content p-4">
+        <!-- Unique styling for "Saved Projects" -->
+        <div class="bg-pink-500 text-white px-4 py-2 rounded-md mb-4">
+            <h2 class="text-2xl font-semibold">Saved Projects</h2>
         </div>
 
-        <!-- Sidebar -->
-        <div id="sidebar" class="sidebar">
-            <div class="sidebar-content">
-                <h2 class="text-2xl font-semibold mb-4">Saved Projects</h2>
-                <!-- List of Saved Projects (Can populate this dynamically) -->
-                <ul>
-                    <li class="mb-2">Project 1</li>
-                    <li class="mb-2">Project 2</li>
-                    <li class="mb-2">Project 3</li>
-                </ul>
-                <!-- Logout Button -->
-                <button class="bg-pink-500 text-white px-4 py-2 mt-4 rounded-md logout-button" onclick="logout()">Logout</button>
-            </div>
+        <!-- List of Saved Projects (Can populate this dynamically) -->
+        <ul>
+            <li class="mb-2"><a href="#" class="text-pink-800 hover:underline">Project 1</a></li>
+            <li class="mb-2"><a href="#" class="text-pink-800 hover:underline">Project 2</a></li>
+            <li class="mb-2"><a href="#" class="text-pink-800 hover:underline">Project 3</a></li>
+        </ul>
+
+        <!-- Logout Button -->
+        <div class="mt-4">
+            <button class="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-md logout-button w-full" onclick="logout()">Logout</button>
         </div>
+    </div>
+</div>
     </div>
     <script src="/js/homepage.js"></script>
 </body>
