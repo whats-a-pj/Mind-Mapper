@@ -2,32 +2,20 @@ const router = require('express').Router();
 const { MindMap, User } = require('../models');
 const withAuth = require('../utils/auth');
 
-// router.post('/login', async (req, res) => {
-//     try {
-//         const mindMapData = await MindMap.findAll({
-//             include: [{ model: User }]
-//         });
-// 		// console.log(mindMapData)
-// 		res.render('dashboard')
-
-
-
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
 
 
 
 router.get('/', async (req, res) => {
 	try {
-		const mindMapData = await User.findAll({
+		const mindMapData = await MindMap.findAll({
 			include: [
 				{
-					model: MindMap
+					model: User,
+					
 				}
 			]
 		});
+		console.log(mindMapData)
 
 		const userMindMap = mindMapData.map((mindMap) =>
 			mindMap.get({ plain: true })
@@ -43,18 +31,18 @@ router.get('/', async (req, res) => {
 		res.status(500).json(err);
 	}
 });
-router.get('/mindMap/:id', async (req, res) => {
-	const mindMapDataById = await User.findByPk(req.params.id, {
+router.get('/mindmaps/:id', async (req, res) => {
+	const mindMapDataById = await MindMap.findByPk(req.params.id, {
 		
 		include: [
 			{
 				model: User,
-				attributes: ['mindmap'] // may change based on seeds file 
+				attributes: ['name'] // may change based on seeds file 
 			}
 		]
 	});
 	const mindMapDataByIData = mindMapDataById.get({ plain: true });
-	res.render('mindmap', {
+	res.render('dashboard', {
 		...mindMapDataByIData,
 		logged_in: req.session.logged_in
 	});
