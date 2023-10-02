@@ -29,6 +29,28 @@
         <button id='loginBtn' class="flex w-full justify-center rounded-md bg-pink-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600">Sign in</button>
       </div>
     </form>
-    <p class="text-pink-600 text-sm text-center">Don't have an account? <a href="#" id="signup-link" class="signup">Sign up</a></p>
+    <p class="text-pink-600 text-sm text-center">Don't have an account? <a href="#" id="signup-link" class="signup text-white">Sign up</a></p>
+
+    <!-- Sign-up Form (Initially hidden) -->
+        <form id="signUpForm" class="mt-32 mb-40 space-y-6">
+            <div>
+                <label for="signupEmail" class="block text-sm font-medium leading-6 text-pink-600">Email address</label>
+                <div class="mt-2">
+                    <input id="signupEmail" name="signupEmail" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-pink-600 shadow-sm ring-1 ring-inset ring-pink-300 placeholder:text-pink-400 focus:ring-2 focus:ring-inset focus:ring-pink-600 sm:text-sm sm:leading-6">
+                </div>
+            </div>
+            <div>
+                <label for="signupPassword" class="block text-sm font-medium leading-6 text-pink-600">Password</label>
+                <div class="mt-2">
+                    <input id="signupPassword" name="signupPassword" type="password" autocomplete="new-password" required class="block w-full rounded-md border-0 py-1.5 text-pink-600 shadow-sm ring-1 ring-inset ring-pink-300 placeholder:text-pink-400 focus:ring-2 focus:ring-inset focus:ring-pink-600 sm:text-sm sm:leading-6">
+                </div>
+                <label for="signupPassword" class="mt-2 block text-sm font-medium leading-6 text-pink-600">Confirm Password</label>
+                <div class="mt-2">
+                    <input id="signupPasswordConfirm" name="signupPassword" type="password" autocomplete="new-password" required class="block w-full rounded-md border-0 py-1.5 text-pink-600 shadow-sm ring-1 ring-inset ring-pink-300 placeholder:text-pink-400 focus:ring-2 focus:ring-inset focus:ring-pink-600 sm:text-sm sm:leading-6">
+                    <p id="passwordMatchMessage" class="mt-2 text-sm text-pink-600 hidden">Passwords match!</p>
+                    <p id="passwordMismatchMessage" class="mt-2 text-sm text-pink-600 hidden">Passwords do not match.</p>
+                </div>
+            </div>
+            <button type="submit" class="flex w-full justify-center rounded-md bg-pink-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-pink-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600">Sign Up</button>
     </div>
     <script src="/js/login.js"></script>
