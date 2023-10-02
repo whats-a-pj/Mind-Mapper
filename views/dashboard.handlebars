@@ -119,21 +119,22 @@
 
                 <!-- List of Saved Projects (Can populate this dynamically) -->
                 <ul>
-                    <li class="mb-2"><a href="#" class="text-pink-800 hover:underline">Project 1</a></li>
+                    <li class="mb-2"><a href="#" class="text-pink-800 hover:underline">{{mindmaps.title}}Project 1</a></li>
                     <li class="mb-2"><a href="#" class="text-pink-800 hover:underline">Project 2</a></li>
                     <li class="mb-2"><a href="#" class="text-pink-800 hover:underline">Project 3</a></li>
                 </ul>
 
                 <!-- Logout Button -->
                 <div class="mt-4 pb-2 absolute bottom-0 w-11/12">
-                    <button class="bg-pink-500 hover:bg-pink-600 text-white py-2 rounded-md logout-button w-full"
-                        onclick="logout()">Logout</button>
+                    <button id="logout" class="bg-pink-500 hover:bg-pink-600 text-white py-2 rounded-md logout-button w-full"
+                        onclick="">Logout</button>
                 </div>
             </div>
         </div>
     </div>
     </div>
     <script src="/js/homepage.js"></script>
+        <script src="/js/logout.js"></script>
 </body>
 
 </html>
