@@ -1,14 +1,13 @@
 //unsure if i really need to target the form element or not so i commented them out for now.
 
 //const projectTitleCheck = document.getElementById("#project-titleForm");
-const titleTxtArea = document.getElementById('#inputTitle');
-const titleSubmit = document.getElementById('#submitTitle');
+const titleTxtArea = document.getElementById('inputTitle');
+const titleSubmit = document.getElementById('submitTitle');
 
-console.log('test')
 titleSubmit.addEventListener('click', function () {
 
 var userTitle = titleTxtArea.value;
-
+console.log(userTitle);
 fetch('/submitTitle', {
     method: 'POST',
     body: JSON.stringify({ input: userTitle }),
@@ -21,8 +20,8 @@ fetch('/submitTitle', {
 });
 
 //const userStoryCheck = document.getElementById("#userStoryForm");
-const userStoryTxt = document.getElementById('#inputCriteria');
-const userStorySubmit = document.getElementById('#submitCriteria');
+const userStoryTxt = document.getElementById('inputCriteria');
+const userStorySubmit = document.getElementById('submitCriteria');
 
 userStorySubmit.addEventListener('click', function () {
 
@@ -38,8 +37,8 @@ fetch('/submitUserStory', {
 });
 
 //const wireFrameCheck = document.getElementById("#wireframeForm");
-const wireFrameTxt = document.getElementById('#inputWireframe');
-const wireFrameSubmit = document.getElementById('#submitWireframe');
+const wireFrameTxt = document.getElementById('inputWireframe');
+const wireFrameSubmit = document.getElementById('submitWireframe');
 
 wireFrameSubmit.addEventListener('click', function () {
 
@@ -55,8 +54,8 @@ fetch('/submitWireframe', {
 });
 
 //const notesCheck = document.getElementById("#notesForm");
-const notesTxt = document.getElementById('#inputNotes');
-const notesSubmit = document.getElementById('#submitNotes');
+const notesTxt = document.getElementById('inputNotes');
+const notesSubmit = document.getElementById('submitNotes');
 
 notesSubmit.addEventListener('click', function () {
 

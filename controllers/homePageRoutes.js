@@ -110,22 +110,22 @@ router.get('/projectquestions', withAuth, async (req, res) => {
 // these post routes are *supposed to* take the users input from project 
 // questions and add it to the hidden div in dashboard
 
-router.post('/submitTitle', (req, res) => {
+router.get('/submitTitle', (req, res) => {
     const userTitle = req.body.input;
     res.render('output', { userTitle });
 });
 
-router.post('/submitUserStory', (req, res) => {
+router.get('/submitUserStory', (req, res) => {
     const userStory = req.body.input;
     res.render('output', { userStory });
 });
 
-router.post('/submitNotes', (req, res) => {
+router.get('/submitNotes', (req, res) => {
     const notes = req.body.input;
     res.render('output', { notes });
 });
 
-router.post('/submitWireframe', (req, res) => {
+router.get('/submitWireframe', (req, res) => {
     const wireFrame = req.body.input;
     res.render('output', { wireFrame });
 });

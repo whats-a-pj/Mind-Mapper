@@ -1,8 +1,6 @@
 
 /***********************************************/
-//todo SIDEBAR eventlistener
-console.log("hello world")
-// console.log(sidebar)
+//sidebar toggle
 document.addEventListener('DOMContentLoaded', function() {
     const sidebar = document.getElementById('sidebar');
     const sidebarContent = document.getElementById('sidebar-content');
@@ -12,13 +10,31 @@ sidebar.addEventListener('click', function() {
     sidebarContent.classList.toggle('sidebar');
 });
 });
-//todo NEW PROJECT eventlistener
 
+/***********************************************/
+//new project- project questions page
+document.addEventListener('DOMContentLoaded', function() {
+    const newProject = document.getElementById('addNew');
+
+newProject.addEventListener('click', function() {
+        document.location.replace('/projectquestions');
+})
+});
+
+/***********************************************/
 //todo SAVED PROJECTS eventlisteners??
 
 /*********************************************/
 //todo eventlisteners for circles 1, 2, 3.
+//add hide class to each circle's content hidden divs and remove attribute on click?? like we did above with the toggle method
+document.addEventListener('DOMContentLoaded', function() {
+    const criteriaCircle = document.getElementById('userstorycircle');
 
+criteriaCircle.addEventListener('click', function() {
+    const criteriaHidden = document.getElementById('usercriteria');
+    criteriaHidden.removeAttribute('hide');
+})
+});
 
 /*********************************************/
 // const dashboardRo = async (event) => {
