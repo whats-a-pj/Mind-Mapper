@@ -22,6 +22,23 @@ if (response.ok) {
     }}
 };
 
+// Get references to the "Sign Up" link and the sign-up form
+const signUpLink = document.getElementById('signup-link');
+const signUpForm = document.getElementById('signUpForm');
+
+// A click event listener for the "sign Up" link
+signUpLink.addEventListener('click', (event) => {
+    event.preventDefault(); 
+
+    // Toggle the visibility of the sign-up form
+    signUpForm.classList.toggle('hidden');
+
+    // Smoothly scroll to the sign-up form
+    window.scrollTo({
+        behavior: 'smooth'
+    });
+});
+
 
 const signupHandler = async (event) => {
     event.preventDefault();
