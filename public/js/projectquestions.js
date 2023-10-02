@@ -1,6 +1,4 @@
-//unsure if i really need to target the form element or not so i commented them out for now.
-
-//const projectTitleCheck = document.getElementById("#project-titleForm");
+//Name of project
 const titleTxtArea = document.getElementById('inputTitle');
 const titleSubmit = document.getElementById('submitTitle');
 
@@ -19,7 +17,7 @@ fetch('/submitTitle', {
 // console.log(userTitle);
 });
 
-//const userStoryCheck = document.getElementById("#userStoryForm");
+//Acceptance criteria
 const userStoryTxt = document.getElementById('inputCriteria');
 const userStorySubmit = document.getElementById('submitCriteria');
 
@@ -36,7 +34,7 @@ fetch('/submitUserStory', {
     })
 });
 
-//const wireFrameCheck = document.getElementById("#wireframeForm");
+//Link to wireframe
 const wireFrameTxt = document.getElementById('inputWireframe');
 const wireFrameSubmit = document.getElementById('submitWireframe');
 
@@ -53,7 +51,7 @@ fetch('/submitWireframe', {
     })
 });
 
-//const notesCheck = document.getElementById("#notesForm");
+//Notes
 const notesTxt = document.getElementById('inputNotes');
 const notesSubmit = document.getElementById('submitNotes');
 
@@ -70,8 +68,14 @@ fetch('/submitNotes', {
     })
 });
 
+//Finish button- redirects to dashboard
+document.addEventListener('DOMContentLoaded', function() {
+    const dashboardRedirect = document.getElementById('finishBtn');
 
-
+dashboardRedirect.addEventListener('click', function() {
+        document.location.replace('/dashboard');
+})
+});
 
 
 /***********************************************************************/
