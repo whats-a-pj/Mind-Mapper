@@ -6,33 +6,39 @@ document.addEventListener('DOMContentLoaded', function() {
     const sidebarContent = document.getElementById('sidebar-content');
 
 sidebar.addEventListener('click', function() {
-    console.log('test')
     sidebarContent.classList.toggle('sidebar');
 });
-});
-
-/***********************************************/
-//new project- project questions page
-document.addEventListener('DOMContentLoaded', function() {
     const newProject = document.getElementById('addNew');
 
 newProject.addEventListener('click', function() {
         document.location.replace('/projectquestions');
-})
+});
+//todo SAVED PROJECTS eventlisteners
 });
 
-/***********************************************/
-//todo SAVED PROJECTS eventlisteners??
-
 /*********************************************/
-//todo eventlisteners for circles 1, 2, 3.
-//add hide class to each circle's content hidden divs and remove attribute on click?? like we did above with the toggle method
+//circle toggle
 document.addEventListener('DOMContentLoaded', function() {
     const criteriaCircle = document.getElementById('userstorycircle');
 
 criteriaCircle.addEventListener('click', function() {
     const criteriaHidden = document.getElementById('usercriteria');
     criteriaHidden.removeAttribute('hide');
+    criteriaHidden.style = "display: block"
+})
+    const  wireframeCircle = document.getElementById('wireframecircle');
+
+wireframeCircle.addEventListener('click', function() {
+    const wireframeHidden = document.getElementById('userwireframe');
+    wireframeHidden.removeAttribute('hide');
+    wireframeHidden.style = "display: block"
+})
+    const notesCircle = document.getElementById('notescircle');
+
+notesCircle.addEventListener('click', function() {
+    const notesHidden = document.getElementById('usernotes');
+    notesHidden.removeAttribute('hide');
+    notesHidden.style = "display: block"
 })
 });
 

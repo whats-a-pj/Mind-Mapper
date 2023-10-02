@@ -96,12 +96,45 @@ router.get('/projectquestions', withAuth, async (req, res) => {
 })
 
 // these post routes are *supposed to* take the users input from project 
-// questions and add it to the hidden div in dashboard
+// questions and add it to the hidden divs in dashboard
 
-router.get('/submitTitle', (req, res) => {
-    const userTitle = req.body.input;
-    res.render('output', { userTitle });
+
+router.post('/submitTitle', (req, res) => {
+    const inputTitle = req.body.input;
+	//do something here to store inputTitle to MindMap model
+    res.redirect('/renderTitle');
 });
+
+router.get('/renderTitle', withAuth, async (req, res) => {
+    try {
+        const showTitle = await MindMap.findOne(req.session.user_id, {
+            include: [{ 
+				model: MindMap,
+				attributes: ['title'] 
+			}]
+        })
+
+        const inputTitleData = showTitle.get({ plain: true });
+
+        res.render('/renderTitle', {
+            ...inputTitleData,
+            logged_in: true
+        })
+		res.redirect('/dashboard')
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
+// router.post('/submitTitle', (req, res) => {
+//     const inputTitle = req.body.input;
+// 	//do something here to add it to database??
+//     res.redirect('/renderTitle');
+// });
+
+// router.get('/renderTitle', (req, res) => {
+// 	const render = 
+// })
 
 router.get('/submitUserStory', (req, res) => {
     const userStory = req.body.input;
