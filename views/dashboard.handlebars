@@ -1,63 +1,79 @@
 <!DOCTYPE html>
 <style>
-        /* Custom CSS for circles */
-        .circle {
-            width: 150px; 
-            height: 150px; 
-            border-radius: 50%;
-            display: inline-block;
-            margin-top: 50px;
-            margin-right: 20px;
-            display: inline-flex; /* Flexbox center content */
-            justify-content: center; /* Horizontally center content */
-            align-items: center; /* Vertically center content */
+    /* Custom CSS for circles */
+    .circle {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-top: 50px;
+        margin-right: 20px;
+        display: inline-flex;
+        /* Flexbox center content */
+        justify-content: center;
+        /* Horizontally center content */
+        align-items: center;
+        /* Vertically center content */
+    }
+
+    /* Apply padding to the second circle on medium and larger screens */
+    @media (min-width: 640px) {
+        .circle:nth-child(2) {
+            margin-top: 200px;
         }
-        /* Apply padding to the second circle on medium and larger screens */
-        @media (min-width: 640px) {
-            .circle:nth-child(2) {
-                margin-top: 200px; 
-            }
-        }
-        .sidebar {
-            width: 0;
-            position: fixed;
-            top: 0;
-            right: -250px; /* Start offscreen to the right */
-            height: 100%;
-            background-color: #ff69b4; /* Pink */
-            overflow-x: hidden;
-            transition: 0.3s;
-            z-index: 1;
-        }
-        .sidebar.show {
-            right: 0; /* Slide in from the right */
-        }
-        .sidebar-content {
-            padding: 20px;
-            color: white;
-        }
-        .logout-button {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-        }
-    </style>
+    }
+
+.hide {
+    display: none;
+}
+
+    .sidebar {
+        width: 0;
+        position: fixed;
+        top: 0;
+        right: -250px;
+        /* Start offscreen to the right */
+        height: 100%;
+        background-color: #ff69b4;
+        /* Pink */
+        overflow-x: hidden;
+        transition: 0.3s;
+        z-index: 1;
+    }
+
+    .sidebar.show {
+        right: 0;
+        /* Slide in from the right */
+    }
+
+    .sidebar-content {
+        padding: 20px;
+        color: white;
+    }
+
+    .logout-button {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+    }
+</style>
 
 <body class="bg-pink-100"> <!-- Background color set to pink -->
     <div class="min-h-screen flex flex-col justify-center items-center">
 
         <!-- Upper Rectangle with Placeholder Project Title -->
         <div class="bg-pink-500 rounded-lg p-6 shadow-md w-80 text-center">
-            <div class="bg-pink-400 block text-lg font-semibold mb-2 project-title" contenteditable="true">{{userTitle}}</div>
+            <div class="bg-pink-400 block text-lg font-semibold mb-2 project-title" contenteditable="true">{{userTitle}}
+            </div>
         </div>
 
-         <!-- Circles Container -->
+        <!-- Circles Container -->
         <div class="flex flex-col sm:flex-row lg:space-x-20 md:space-x-10 sm:space-x-5">
             <!-- Circle 1 -->
             <div class="circle bg-pink-400 rounded-full flex items-center justify-center cursor-pointer">
                 <div id="circle1" class="text-white text-center">
                     <div class="title">Acceptance Criteria</div>
-                    <div id="usercriteria"class="content hidden">{{userStory}}</div>
+                    <div id="usercriteria" class="content hidden">{{userStory}}</div>
                 </div>
             </div>
 
@@ -66,8 +82,8 @@
                     <div class="title">Wireframe</div>
                     <div id="userwireframe" class="content hidden">{{wireFrame}}</div>
                 </div>
-                </div>
-    
+            </div>
+
             <!-- Circle 3 -->
             <div class="circle bg-pink-400 rounded-full flex items-center justify-center cursor-pointer">
                 <div id="circle3" class="text-white text-center">
@@ -77,37 +93,47 @@
             </div>
         </div>
     </div>
-            <!-- Clickable Icon to Open Sidebar -->
-<div class="fixed top-0 right-0 m-4 cursor-pointer" onclick="toggleSidebar()">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-pink-500">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-    </svg>
-</div>
+    <!-- Clickable Icon to Open Sidebar -->
+    <div id="sidebar" class="fixed top-0 right-0 m-4 cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+            class="w-6 h-6 text-pink-500">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
 
-<!-- Sidebar -->
-<div id="sidebar" class="sidebar fixed top-0 right-0 h-screen bg-gradient-to-b from-pink-200 w-64 overflow-y-auto">
-    <div class="sidebar-content p-4">
-        <!-- Unique styling for "Saved Projects" -->
-        <div class="bg-pink-500 text-white px-4 py-2 rounded-md mb-4">
-            <h2 class="text-2xl font-semibold">Saved Projects</h2>
-        </div>
 
-        <!-- List of Saved Projects (Can populate this dynamically) -->
-        <ul>
-            <li class="mb-2"><a href="#" class="text-pink-800 hover:underline">Project 1</a></li>
-            <li class="mb-2"><a href="#" class="text-pink-800 hover:underline">Project 2</a></li>
-            <li class="mb-2"><a href="#" class="text-pink-800 hover:underline">Project 3</a></li>
-        </ul>
+        <!-- Sidebar -->
+        <div id="sidebar-content"
+            class="sidebar fixed top-0 right-0 h-screen bg-gradient-to-b from-pink-200 overflow-y-auto">
+            <div class="p-4">
+                <!-- Unique styling for "Saved Projects" -->
 
-        <!-- Logout Button -->
-        <div class="mt-4 pb-2 absolute bottom-0 w-11/12">
-            <button class="bg-pink-500 hover:bg-pink-600 text-white py-2 rounded-md logout-button w-full" onclick="logout()">Logout</button>
+                <!--PJ's CODE-->
+                <div class="bg-pink-500 text-white px-4 py-2 rounded-md mb-4">
+                    <h2 class="text-2xl font-semibold">New Project<span><button id="addNew">+</button></span></h2>
+                </div>
+                <!--////////////////-->
+
+                <div class="bg-pink-500 text-white px-4 py-2 rounded-md mb-4">
+                    <h2 class="text-2xl font-semibold">Saved Projects</h2>
+                </div>
+
+                <!-- List of Saved Projects (Can populate this dynamically) -->
+                <ul>
+                    <li class="mb-2"><a href="#" class="text-pink-800 hover:underline">Project 1</a></li>
+                    <li class="mb-2"><a href="#" class="text-pink-800 hover:underline">Project 2</a></li>
+                    <li class="mb-2"><a href="#" class="text-pink-800 hover:underline">Project 3</a></li>
+                </ul>
+
+                <!-- Logout Button -->
+                <div class="mt-4 pb-2 absolute bottom-0 w-11/12">
+                    <button class="bg-pink-500 hover:bg-pink-600 text-white py-2 rounded-md logout-button w-full"
+                        onclick="logout()">Logout</button>
+                </div>
+            </div>
         </div>
     </div>
-</div>
     </div>
     <script src="/js/homepage.js"></script>
 </body>
+
 </html>
-
-

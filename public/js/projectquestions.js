@@ -4,7 +4,7 @@
 const titleTxtArea = document.getElementById('#inputTitle');
 const titleSubmit = document.getElementById('#submitTitle');
 
-
+console.log('test')
 titleSubmit.addEventListener('click', function () {
 
 var userTitle = titleTxtArea.value;
@@ -17,7 +17,7 @@ fetch('/submitTitle', {
         }
     })
 //this is to go INTO dashboard
-//console.log(userTitle);
+// console.log(userTitle);
 });
 
 //const userStoryCheck = document.getElementById("#userStoryForm");
