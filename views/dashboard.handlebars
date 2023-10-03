@@ -128,7 +128,7 @@ background-repeat: repeat;
                 <!-- List of Saved Projects (Can populate this dynamically) -->
                 <ul>
                     {{#each userMindMap as |userMindMap|}}
-                    <li class="mb-2"><a href="#" class="text-pink-800 hover:underline">{{userMindMap.title}}</a></li>
+                    <li class="mb-2"><a href="#" class="text-pink-800 hover:underline saved" id={{userMindMap.id}}>{{userMindMap.title}}</a></li>
                     {{/each}}
                 </ul>
 

@@ -94,6 +94,48 @@ router.get('/projectquestions', withAuth, async (req, res) => {
     }
 })
 
+router.post('/showSaved', withAuth, async (req, res) => {
+    console.log('@@@@@@@@@@@@@@@@@@@@@')
+    console.log(req.body.id)
+    try {
+        const mindMapData = await MindMap.findAll({
+
+            where: { user_id: req.session.user_id }
+
+        });
+        console.log(mindMapData)
+
+        const userMindMap = mindMapData.map((mindmaps) =>
+            mindmaps.get({ plain: true })
+        );  
+        const showTitle = await MindMap.findOne({
+            where: { id: req.body.id
+            },
+            attributes: ['title', 'acceptance_criteria', 'wireframe_link', 'note']
+        });
+
+        if (showTitle) {
+            const mostRecent = showTitle.get({ plain: true });
+console.log(mostRecent)
+const userProfile = await User.findByPk(req.session.user_id, {
+    attributes: { exclude: ['password'] },
+    include: [{model: MindMap}]
+})
+    // console.log(userProfile)
+const profileData = userProfile.get({ plain: true });
+            res.render('/dashboard', {
+                ...profileData,
+                userMindMap,
+                mostRecent,
+                logged_in: true
+            });
+        } else {
+            res.status(404).send("Title not found");
+        }
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
 // these post routes are *supposed to* take the users input from project 
 // questions and add it to the hidden divs in dashboard
 
