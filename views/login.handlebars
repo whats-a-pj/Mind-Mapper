@@ -1,21 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
-</head>
 <body>
-  <header class="p-4">
-    <div class="container mx-auto flex justify-between items-center">
-        <a href="#">
-            <img class="h-10 w-auto" src="../public/css/assets/Brain.png" alt="Mind Mapper">
-        </a>
-  </header>
-
   <div class="flex min-h-screen flex-col justify-center px-6 py-12 lg:px-8 bg-gradient-to-b from-pink-200 to-pink-400 w-full">
     <div class="w-full max-w-sm mx-auto sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl">
-      <img class="mx-auto h-10 w-auto" src="../public/css/assets/Brain.png" alt="Mind Mapper">
       <h2 class="mt-10 text-center text-4xl font-extrabold text-white leading-9 tracking-tight">Sign in to your account</h2>
     </div>
 
@@ -31,9 +16,6 @@
         <div>
           <div class="flex items-center justify-between">
             <label for="password" class="block text-sm font-medium leading-6 text-pink-600">Password</label>
-            <div class="text-sm">
-              <a href="" class="font-semibold text-pink-600 hover:text-pink-500">Forgot password?</a>
-            </div>
           </div>
           <div class="mt-2">
             <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-pink-600 shadow-sm ring-1 ring-inset ring-pink-300 placeholder:text-pink-400 focus:ring-2 focus:ring-inset focus:ring-pink-600 sm:text-sm sm:leading-6">
@@ -48,7 +30,7 @@
     </div>
 
       <!-- Sign-up Form (Initially hidden) -->
-      
+    <div>
       <form id="signUpForm" class="hidden mt-32 mb-40 space-y-6">
           <div>
               <label for="signupEmail" class="block text-sm font-medium leading-6 text-pink-600">Email address</label>

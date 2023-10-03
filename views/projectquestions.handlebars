@@ -41,12 +41,6 @@
 <script src="/public/js/projectquestions.js"></script>
 </html> --}}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
     <style>
         @media (min-width: 645px) {
             .full-screen-container {
@@ -58,7 +52,6 @@
         }
     </style>
     <title>Mind Map</title>
-</head>
 <body class="bg-pink-100">
     <div class="bg-pink-500 text-white p-4">
         <h1 class="text-2xl font-semibold">Create Your Mind Map</h1>
@@ -69,41 +62,32 @@
         <div class="bg-pink-200 shadow-md rounded-lg p-4">
             <label class="text-pink-800 font-semibold">What is the name of your project?</label>
             <input type="text" id="inputTitle" class="w-full border rounded-lg p-2 mt-2">
-            <button id= "submitTitle" class="bg-pink-500 hover:bg-pink-600 text-white rounded-lg p-2 mt-2">Submit</button>
         </div>
-        </form>
+        
 
         <div class="mt-4">
-            <form id="userStoryForm">
             <div class="bg-pink-200 shadow-md rounded-lg p-4">
                 <label class="text-pink-800 font-semibold">Acceptance criteria?</label>
                 <input type="text" id="inputCriteria" class="w-full border rounded-lg p-2 mt-2">
-                <button id="submitCriteria" class="bg-pink-500 hover:bg-pink-600 text-white rounded-lg p-2 mt-2">Submit</button>
-            </div>
-            </form>
+            </div>           
         </div>
 
         <div class="mt-4">
-            <form id="notesForm">
             <div class="bg-pink-200 shadow-md rounded-lg p-4">
                 <label class="text-pink-800 font-semibold">Notes to self or tips</label>
                 <input type="text" id="inputNotes" class="w-full border rounded-lg p-2 mt-2">
-                <button id="submitNotes" class="bg-pink-500 hover:bg-pink-600 text-white rounded-lg p-2 mt-2">Submit</button>
             </div>
-            </form>
         </div>
 
         <div class="mt-4">
-            <form id="wireframeForm">
             <div class="bg-pink-200 shadow-md rounded-lg p-4">
                 <label class="text-pink-800 font-semibold">Link your wireframe</label>
                 <input type="text" id="inputWireframe" class="w-full border rounded-lg p-2 mt-2">
-                <button id="submitWireframe" class="bg-pink-500 hover:bg-pink-600 text-white rounded-lg p-2 mt-2">Submit</button>
             </div>
-            </form>
+        </form>
         </div>
         <div class="mt-4 text-center">
-          <button id="finishBtn" class="bg-pink-500 hover:bg-pink-600 text-white rounded-lg p-3 mx-auto block w-1/2">Finish</button>
+          <button id="finishBtn" class="bg-pink-500 hover:bg-pink-600 text-white rounded-lg p-3 mx-auto block w-1/2">Make Mind Map</button>
         </div>
     </div>
 
