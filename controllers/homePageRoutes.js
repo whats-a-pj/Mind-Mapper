@@ -5,9 +5,9 @@ const withAuth = require('../utils/auth');
 
 
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
 	try {
-		const mindMapData = await MindMap.findAll({
+		const mindMapData =  await MindMap.findAll({
 			include: [
 				{
                     model: User,
