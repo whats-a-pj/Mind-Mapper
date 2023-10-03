@@ -77,14 +77,14 @@ background-repeat: repeat;
             <div id="userstorycircle" class="circle bg-pink-400 rounded-full flex items-center justify-center cursor-pointer">
                 <div id="circle1">
                     <div class="title text-white text-center font-semibold">Acceptance Criteria</div>
-                    <div id="usercriteria" class="hide text-white text-center font-semibold">{{acceptance_criteria}} test</div>
+                    <div id="usercriteria" class="hide text-white text-center font-semibold">{{#each userMindMap as |userMindMap|}}{{userMindMap.acceptance_criteria}}{{/each}} test</div>
                 </div>
             </div>
 
             <div id="wireframecircle" class="circle bg-pink-400 rounded-full flex items-center justify-center cursor-pointer">
                 <div id="circle2">
                     <div class="title text-white text-center font-semibold">Wireframe</div>
-                    <div id="userwireframe" class="hide text-white text-center font-semibold">{{wireframe_link}} test</div>
+                    <div id="userwireframe" class="hide text-white text-center font-semibold">{{#each userMindMap as |userMindMap|}}{{userMindMap.wireframe_link}}{{/each}} test</div>
                 </div>
             </div>
 
@@ -92,7 +92,7 @@ background-repeat: repeat;
             <div id="notescircle" class="circle bg-pink-400 rounded-full flex items-center justify-center cursor-pointer">
                 <div id="circle3">
                     <div class="title text-white text-center font-semibold">Notes</div>
-                    <div id="usernotes" class="hide text-white text-center font-semibold">{{note}} test</div>
+                    <div id="usernotes" class="hide text-white text-center font-semibold">{{#each userMindMap as |userMindMap|}}{{userMindMap.note}}{{/each}} test</div>
                 </div>
             </div>
         </div>
@@ -126,8 +126,6 @@ background-repeat: repeat;
                 <ul>
                     {{#each userMindMap as |userMindMap|}}
                     <li class="mb-2"><a href="#" class="text-pink-800 hover:underline">{{userMindMap.title}}</a></li>
-                    {{!-- <li class="mb-2"><a href="#" class="text-pink-800 hover:underline">Project 2</a></li> --}}
-                    {{!-- <li class="mb-2"><a href="#" class="text-pink-800 hover:underline">Project 3</a></li> --}}
                     {{/each}}
                 </ul>
 
