@@ -22,6 +22,14 @@ fetch('/submitTitle', {
     headers: {
         'Content-Type': 'application/json'
         }
-    }).then(function() {document.location.replace('/dashboard');
+    })/*.then(fetch('/renderTitle', {
+        method: 'GET',
+        body: JSON.stringify({ title: userTitle, acceptance_criteria: userStory, wireframe_link: wireFrame, note: notes }),
+        headers: {
+            'Content-Type': 'application/json'
+            }
+    }))*/.then(function() {document.location.replace('/dashboard');
         });
-    });
+});
+
+

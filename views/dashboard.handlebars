@@ -67,7 +67,7 @@ background-repeat: repeat;
 
     <form action="" method="POST">    
         <div class="bg-pink-500 rounded-lg p-6 shadow-md w-80 mx-auto text-center">
-            <div class="bg-pink-400 block text-lg font-semibold mb-2 project-title" contenteditable="true">{{title}}
+            <div class="bg-pink-400 block text-lg font-semibold mb-2 project-title" contenteditable="true">{{#each userMindMap as |userMindMap|}}{{userMindMap.title}}{{/each}}
             </div>
         </div>
 
