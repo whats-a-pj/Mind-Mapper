@@ -100,9 +100,8 @@ router.get('/projectquestions', withAuth, async (req, res) => {
 // questions and add it to the hidden divs in dashboard
 
 
-router.post('/submitTitle', (req, res) => {
-    const inputTitle = req.body.input;
-	//do something here to store inputTitle to MindMap model
+router.post('/submitTitle', withAuth, async (req, res) => {
+	await MindMap.create(req.body, req.session.user_id)
     res.redirect('/renderTitle');
 });
 
@@ -126,30 +125,5 @@ router.get('/renderTitle', withAuth, async (req, res) => {
         res.status(500).json(err)
     }
 })
-
-// router.post('/submitTitle', (req, res) => {
-//     const inputTitle = req.body.input;
-// 	//do something here to add it to database??
-//     res.redirect('/renderTitle');
-// });
-
-// router.get('/renderTitle', (req, res) => {
-// 	const render = 
-// })
-
-router.get('/submitUserStory', (req, res) => {
-    const userStory = req.body.input;
-    res.render('output', { userStory });
-});
-
-router.get('/submitNotes', (req, res) => {
-    const notes = req.body.input;
-    res.render('output', { notes });
-});
-
-router.get('/submitWireframe', (req, res) => {
-    const wireFrame = req.body.input;
-    res.render('output', { wireFrame });
-});
 
 module.exports = router;
