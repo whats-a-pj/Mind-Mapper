@@ -1,6 +1,7 @@
 # Mind Mapper
 
 ## User Story
+As a web developer, sometimes I have to work with an insane amount of files and data to get an application that does it's job. I want an application that can help me put together a 'game plan' for big projects that will help me create an MVP in a short amount of time
 
 ## Motivations
 
