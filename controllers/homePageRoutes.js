@@ -123,7 +123,7 @@ const userProfile = await User.findByPk(req.session.user_id, {
 })
     // console.log(userProfile)
 const profileData = userProfile.get({ plain: true });
-            res.render('/dashboard', {
+            res.render('saved', {
                 ...profileData,
                 userMindMap,
                 mostRecent,
