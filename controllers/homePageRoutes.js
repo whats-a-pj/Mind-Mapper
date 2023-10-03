@@ -133,8 +133,11 @@ console.log(inputTitleData)
 });
 
 router.post('/submitTitle', withAuth, async (req, res) => {
+    let newMind = req.body;
+    newMind.user_id = req.session.user_id;
+
     try {
-        await MindMap.create(req.body, req.session.user_id);
+        await MindMap.create(newMind);
         // Fetch the updated data from the database
         const updatedData = await MindMap.findOne({
             where: {
