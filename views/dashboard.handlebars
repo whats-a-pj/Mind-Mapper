@@ -119,9 +119,11 @@
 
                 <!-- List of Saved Projects (Can populate this dynamically) -->
                 <ul>
-                    <li class="mb-2"><a href="#" class="text-pink-800 hover:underline">{{mindmaps.title}}Project 1</a></li>
-                    <li class="mb-2"><a href="#" class="text-pink-800 hover:underline">Project 2</a></li>
-                    <li class="mb-2"><a href="#" class="text-pink-800 hover:underline">Project 3</a></li>
+                    {{#each userMindMap as |userMindMap|}}
+                    <li class="mb-2"><a href="#" class="text-pink-800 hover:underline">{{userMindMap.title}}</a></li>
+                    {{!-- <li class="mb-2"><a href="#" class="text-pink-800 hover:underline">Project 2</a></li> --}}
+                    {{!-- <li class="mb-2"><a href="#" class="text-pink-800 hover:underline">Project 3</a></li> --}}
+                    {{/each}}
                 </ul>
 
                 <!-- Logout Button -->

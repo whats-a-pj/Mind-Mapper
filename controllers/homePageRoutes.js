@@ -6,31 +6,14 @@ const withAuth = require('../utils/auth');
 
 
 router.get('/', withAuth, async (req, res) => {
-	try {
-		const mindMapData =  await MindMap.findAll({
-			include: [
-				{
-                    model: User,
-                    attributes: ['name']
-					
-				}
-			]
-		});
-		console.log(mindMapData)
-
-		const userMindMap = mindMapData.map((mindmaps) =>
-			mindmaps.get({ plain: true })
-		);
+  
 
 		res.render('dashboard', {
 
-			userMindMap,
+		
 			logged_in: req.session.logged_in
 		});
-	} catch (err) {
-		console.error(err)
-		res.status(500).json(err);
-	}
+
 });
 router.get('/mindmaps/:id', async (req, res) => {
 	const mindMapDataById = await MindMap.findByPk(req.params.id, {
@@ -51,8 +34,26 @@ router.get('/mindmaps/:id', async (req, res) => {
 
 
 router.get('/dashboard', withAuth, async (req, res) => { 
-    
+    console.log(req.session)
     try {
+        const mindMapData = await MindMap.findAll({
+            // include: [
+            // 	{
+            //         // model: User,
+            //         // attributes: ['name']
+
+            // 	}
+            // ],
+
+            where: { user_id: req.session.user_id }
+
+        });
+        console.log(mindMapData)
+
+        const userMindMap = mindMapData.map((mindmaps) =>
+            mindmaps.get({ plain: true })
+        );  
+    // try {
 		const userProfile = await User.findByPk(req.session.user_id, {
         attributes: { exclude: ['password'] },
         include: [{model: MindMap}]
@@ -62,12 +63,14 @@ router.get('/dashboard', withAuth, async (req, res) => {
     
     res.render('dashboard', { 
         ...profileData, 
+        userMindMap, 
         logged_in: true
     })
     } catch (err) {
         res.status(500).json(err)
     }
-})
+}
+)
 router.get('/login', (req, res) => {
 	if (req.session.logged_in) {
 		res.redirect('/dashboard');
