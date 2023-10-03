@@ -10,18 +10,19 @@ router.get('/', async (req, res) => {
 		const mindMapData = await MindMap.findAll({
 			include: [
 				{
-					model: User,
+                    model: User,
+                    attributes: ['name']
 					
 				}
 			]
 		});
 		console.log(mindMapData)
 
-		const userMindMap = mindMapData.map((mindMap) =>
-			mindMap.get({ plain: true })
+		const userMindMap = mindMapData.map((mindmaps) =>
+			mindmaps.get({ plain: true })
 		);
 
-		res.render('login', {
+		res.render('dashboard', {
 
 			userMindMap,
 			logged_in: req.session.logged_in
