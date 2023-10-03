@@ -1,9 +1,12 @@
 # Mind Mapper
 
 ## User Story
-As a web developer, sometimes I have to work with an insane amount of files and data to get an application that does it's job. I want an application that can help me put together a 'game plan' for big projects that will help me create an MVP in a short amount of time
+As a web developer, I want an easy to use application to stay organized and productive when I am  working with a team on a large project, so that I can create a game plan to reach an MVP in a short amount of time.
+
 
 ## Motivations
+
+To showcase the knowledge we have all gained through this course so far. Demonstrate problem solving and collaborative techniques. We wanted to create something that will be useful for programmers/developers. Lastly, to stay productive and organized.
 
 
 
