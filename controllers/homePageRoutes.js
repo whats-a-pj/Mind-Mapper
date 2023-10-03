@@ -133,10 +133,42 @@ console.log(inputTitleData)
 });
 
 router.post('/submitTitle', withAuth, async (req, res) => {
-	await MindMap.create(req.body, req.session.user_id)
-    // console.log('$$$$$$$$$$$$$$$$')
-    // console.log(req.body)
-    res.redirect('/renderTitle');
+    try {
+        await MindMap.create(req.body, req.session.user_id);
+        // Fetch the updated data from the database
+        const updatedData = await MindMap.findOne({
+            where: {
+                user_id: req.session.user_id,
+                title: req.body.title,
+                acceptance_criteria: req.body.acceptance_criteria,
+                wireframe_link: req.body.wireframe_link,
+                note: req.body.note
+            },
+            attributes: ['title', 'acceptance_criteria', 'wireframe_link', 'note']
+        });
+
+        if (updatedData) {
+            const inputTitleData = updatedData.get({ plain: true });
+            // Render the dashboard with the updated data
+            res.render('dashboard', {
+                ...inputTitleData,
+                logged_in: true
+            });
+        } else {
+            // Handle the case where no record was found
+            res.status(404).send("Title not found");
+        }
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
+
+
+// router.post('/submitTitle', withAuth, async (req, res) => {
+// 	await MindMap.create(req.body, req.session.user_id)
+//     // console.log('$$$$$$$$$$$$$$$$')
+//     // console.log(req.body)
+//     res.redirect('/renderTitle');
+// });
 
 module.exports = router;
