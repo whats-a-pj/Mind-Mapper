@@ -61,13 +61,13 @@ background-repeat: repeat;
         right: 5px;
     }*/
 </style>
-{{#each userMindMap as |userMindMap|}}
+{{!-- {{#each userMindMap as |userMindMap|}} --}}
 <body class="brainpattern bg-pink-100">
     <div class="min-h-screen flex flex-col justify-center items-center">
 
     <form action="" method="POST">    
         <div class="bg-pink-500 rounded-lg p-6 shadow-md w-80 mx-auto text-center">
-            <div class="bg-pink-400 block text-lg font-semibold mb-2 project-title" contenteditable="true">{{#each userMindMap as |userMindMap|}}{{userMindMap.title}}{{/each}}
+            <div class="bg-pink-400 block text-lg font-semibold mb-2 project-title" contenteditable="true">{{mostRecent.userMindMap.title}}
             </div>
         </div>
 
@@ -77,14 +77,14 @@ background-repeat: repeat;
             <div id="userstorycircle" class="circle bg-pink-400 rounded-full flex items-center justify-center cursor-pointer">
                 <div id="circle1">
                     <div class="title text-white text-center font-semibold">Acceptance Criteria</div>
-                    <div id="usercriteria" class="hide text-white text-center font-semibold">{{acceptance_criteria}} </div>
+                    <div id="usercriteria" class="hide text-white text-center font-semibold">{{mostRecent.acceptance_criteria}} </div>
                 </div>
             </div>
 
             <div id="wireframecircle" class="circle bg-pink-400 rounded-full flex items-center justify-center cursor-pointer">
                 <div id="circle2">
                     <div class="title text-white text-center font-semibold">Wireframe</div>
-                    <div id="userwireframe" class="hide text-white text-center font-semibold">{{wireframe_link}} </div>
+                    <div id="userwireframe" class="hide text-white text-center font-semibold">{{mostRecent.wireframe_link}} </div>
                 </div>
             </div>
 
@@ -92,14 +92,14 @@ background-repeat: repeat;
             <div id="notescircle" class="circle bg-pink-400 rounded-full flex items-center justify-center cursor-pointer">
                 <div id="circle3">
                     <div class="title text-white text-center font-semibold">Notes</div>
-                    <div id="usernotes" class="hide text-white text-center font-semibold">{{note}} </div>
+                    <div id="usernotes" class="hide text-white text-center font-semibold">{{mostRecent.note}} </div>
                 </div>
           
             </div>
     
         </div>
     </div>
-    {{/each}}
+    {{!-- {{/each}} --}}
 </form>
     <!-- Clickable Icon to Open Sidebar -->
     <div id="sidebar" class="fixed top-0 right-0 m-4 cursor-pointer">

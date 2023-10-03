@@ -37,13 +37,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
     console.log(req.session)
     try {
         const mindMapData = await MindMap.findAll({
-            // include: [
-            // 	{
-            //         // model: User,
-            //         // attributes: ['name']
-
-            // 	}
-            // ],
 
             where: { user_id: req.session.user_id }
 
@@ -53,7 +46,8 @@ router.get('/dashboard', withAuth, async (req, res) => {
         const userMindMap = mindMapData.map((mindmaps) =>
             mindmaps.get({ plain: true })
         );  
-    // try {
+        // try {
+        const mostRecent = userMindMap.pop()
 		const userProfile = await User.findByPk(req.session.user_id, {
         attributes: { exclude: ['password'] },
         include: [{model: MindMap}]
@@ -64,6 +58,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     res.render('dashboard', { 
         ...profileData, 
         userMindMap, 
+        mostRecent,
         logged_in: true
     })
     } catch (err) {
