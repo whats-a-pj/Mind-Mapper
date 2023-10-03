@@ -13,8 +13,22 @@ sidebar.addEventListener('click', function() {
 newProject.addEventListener('click', function() {
         document.location.replace('/projectquestions');
 });
-//todo SAVED PROJECTS eventlisteners
-});
+//todo add eventlisteners to each of the saved project li's
+const savedProject = document.getElementsByClassName('saved');
+
+
+for (var i = 0; i < savedProject.length; i++) {
+    savedProject[i].addEventListener('click', function() {
+        fetch('/showSaved', {
+            method: 'POST',
+            body: JSON.stringify({ id: this.id }),
+            headers: {
+                'Content-Type': 'application/json'
+                }
+            })
+    })
+}
+})
 
 /*********************************************/
 //circle toggle
