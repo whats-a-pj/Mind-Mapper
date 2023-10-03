@@ -102,57 +102,41 @@ router.get('/projectquestions', withAuth, async (req, res) => {
 // these post routes are *supposed to* take the users input from project 
 // questions and add it to the hidden divs in dashboard
 
-
-router.post('/submitTitle', (req, res) => {
-    const inputTitle = req.body.input;
-	//do something here to store inputTitle to MindMap model
-    res.redirect('/renderTitle');
-});
-
 router.get('/renderTitle', withAuth, async (req, res) => {
     try {
-        const showTitle = await MindMap.findOne(req.session.user_id, {
-            include: [{ 
-				model: MindMap,
-				attributes: ['title'] 
-			}]
-        })
+        const showTitle = await MindMap.findOne({
+            where: {
+                user_id: req.session.user_id,
+                title: req.session.title,
+                acceptance_criteria: req.session.acceptance_criteria,
+                wireframe_link: req.session.wireframe_link,
+                note: req.session.note
+            },
+            attributes: ['title', 'acceptance_criteria', 'wireframe_link', 'note']
+        });
 
-        const inputTitleData = showTitle.get({ plain: true });
-
-        res.render('/renderTitle', {
-            ...inputTitleData,
-            logged_in: true
-        })
-		res.redirect('/dashboard')
+        if (showTitle) {
+            const inputTitleData = showTitle.get({ plain: true });
+console.log(inputTitleData)
+            res.render('/dashboard', {
+                ...inputTitleData,
+                logged_in: true
+            });
+        } else {
+            // Handle the case where no record was found
+            // You might want to redirect or render an error page
+            res.status(404).send("Title not found");
+        }
     } catch (err) {
-        res.status(500).json(err)
+        res.status(500).json(err);
     }
-})
-
-// router.post('/submitTitle', (req, res) => {
-//     const inputTitle = req.body.input;
-// 	//do something here to add it to database??
-//     res.redirect('/renderTitle');
-// });
-
-// router.get('/renderTitle', (req, res) => {
-// 	const render = 
-// })
-
-router.get('/submitUserStory', (req, res) => {
-    const userStory = req.body.input;
-    res.render('output', { userStory });
 });
 
-router.get('/submitNotes', (req, res) => {
-    const notes = req.body.input;
-    res.render('output', { notes });
-});
-
-router.get('/submitWireframe', (req, res) => {
-    const wireFrame = req.body.input;
-    res.render('output', { wireFrame });
+router.post('/submitTitle', withAuth, async (req, res) => {
+	await MindMap.create(req.body, req.session.user_id)
+    // console.log('$$$$$$$$$$$$$$$$')
+    // console.log(req.body)
+    res.redirect('/renderTitle');
 });
 
 module.exports = router;

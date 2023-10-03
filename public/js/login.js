@@ -33,35 +33,40 @@ signUpLink.addEventListener('click', (event) => {
     // Toggle the visibility of the sign-up form
     signUpForm.classList.toggle('hidden');
 
+
+    const scrollPosition = window.innerHeight;
+
     // Smoothly scroll to the sign-up form
     window.scrollTo({
+        top: scrollPosition,
         behavior: 'smooth'
     });
 });
 
-// get references to the password input fields and messages
-const passwordInput = document.getElementById('signupPassword');
-const confirmPasswordInput = document.getElementById('signupPasswordConfirm');
-const passwordMatchMessage = document.getElementById('passwordMatchMessage');
-const passwordMismatchMessage = document.getElementById('passwordMismatchMessage');
+// Would love to have this be working for future development
+ // get references to the password input fields and messages
+// const passwordInput = document.getElementById('signupPassword');
+// const confirmPasswordInput = document.getElementById('signupPasswordConfirm');
+// const passwordMatchMessage = document.getElementById('passwordMatchMessage');
+// const passwordMismatchMessage = document.getElementById('passwordMismatchMessage');
 
-// function to check if passwords match
-function checkPasswordsMatch() {
-    const password = passwordInput.value;
-    const confirmPassword = confirmPasswordInput.value;
+// // function to check if passwords match
+// function checkPasswordsMatch() {
+//     const password = passwordInput.value;
+//     const confirmPassword = confirmPasswordInput.value;
 
-    if (password === confirmPassword) {
-        passwordMatchMessage.classList.remove('hidden');
-        passwordMismatchMessage.classList.add('hidden');
-    } else {
-        passwordMatchMessage.classList.add('hidden');
-        passwordMismatchMessage.classList.remove('hidden');
-    }
-}
+//     if (password === confirmPassword) {
+//         passwordMatchMessage.classList.remove('hidden');
+//         passwordMismatchMessage.classList.add('hidden');
+//     } else {
+//         passwordMatchMessage.classList.add('hidden');
+//         passwordMismatchMessage.classList.remove('hidden');
+//     }
+// }
 
-// event listeners for both password fields
-passwordInput.addEventListener('input', checkPasswordsMatch);
-confirmPasswordInput.addEventListener('input', checkPasswordsMatch);
+// // event listeners for both password fields
+// passwordInput.addEventListener('input', checkPasswordsMatch);
+// confirmPasswordInput.addEventListener('input', checkPasswordsMatch);
 
 
 
