@@ -1,8 +1,8 @@
 <style>
     /* Custom CSS for circles */
     .circle {
-        width: 150px;
-        height: 150px;
+        width: 250px;
+        height: 250px;
         border-radius: 50%;
         display: inline-block;
         margin-top: 50px;
@@ -24,6 +24,11 @@
 
 .hide {
     display: none;
+}
+
+.brainpattern {
+background-image: url('/css/assets/dashboardbg.png');
+background-repeat: repeat;
 }
 
     .sidebar {
@@ -50,19 +55,19 @@
         color: white;
     }
 
-    .logout-button {
+   /* .logout-button {
         position: absolute;
         bottom: 20px;
         right: 5px;
-    }
+    }*/
 </style>
 
-<body class="bg-pink-100">
+<body class="brainpattern bg-pink-100">
     <div class="min-h-screen flex flex-col justify-center items-center">
 
     <form action="" method="POST">    
         <div class="bg-pink-500 rounded-lg p-6 shadow-md w-80 text-center">
-            <div class="bg-pink-400 block text-lg font-semibold mb-2 project-title" contenteditable="true">{{userTitle}}
+            <div class="bg-pink-400 block text-lg font-semibold mb-2 project-title" contenteditable="true">{{title}}
             </div>
         </div>
 
@@ -70,24 +75,24 @@
         <div class="flex flex-col sm:flex-row lg:space-x-20 md:space-x-10 sm:space-x-5">
             <!-- Circle 1 -->
             <div id="userstorycircle" class="circle bg-pink-400 rounded-full flex items-center justify-center cursor-pointer">
-                <div id="circle1" class="text-white text-center">
-                    <div class="title">Acceptance Criteria</div>
-                    <div id="usercriteria" class="hide">{{userStory}} test</div>
+                <div id="circle1">
+                    <div class="title text-white text-center font-semibold">Acceptance Criteria</div>
+                    <div id="usercriteria" class="hide text-white text-center font-semibold">{{acceptance_criteria}} test</div>
                 </div>
             </div>
 
             <div id="wireframecircle" class="circle bg-pink-400 rounded-full flex items-center justify-center cursor-pointer">
-                <div id="circle2" class="text-white text-center">
-                    <div class="title">Wireframe</div>
-                    <div id="userwireframe" class="hide">{{wireFrame}} test</div>
+                <div id="circle2">
+                    <div class="title text-white text-center font-semibold">Wireframe</div>
+                    <div id="userwireframe" class="hide text-white text-center font-semibold">{{wireframe_link}} test</div>
                 </div>
             </div>
 
             <!-- Circle 3 -->
             <div id="notescircle" class="circle bg-pink-400 rounded-full flex items-center justify-center cursor-pointer">
-                <div id="circle3" class="text-white text-center">
-                    <div class="title">Notes</div>
-                    <div id="usernotes" class="hide">{{notes}} test</div>
+                <div id="circle3">
+                    <div class="title text-white text-center font-semibold">Notes</div>
+                    <div id="usernotes" class="hide text-white text-center font-semibold">{{note}} test</div>
                 </div>
             </div>
         </div>
@@ -114,7 +119,7 @@
                 <!--////////////////-->
 
                 <div class=" text-pink-800 px-4 py-1 mb-4 text-center">
-                    <h2 class="text-2xl">Saved Projects</h2>
+                    <h2 class="text-2xl text-center font-semibold">Saved Projects</h2>
                 </div>
 
                 <!-- List of Saved Projects (Can populate this dynamically) -->
@@ -126,7 +131,7 @@
 
                 <!-- Logout Button -->
                 <div class="mt-4 pb-2 absolute bottom-0 w-11/12">
-                    <button id="logout" class="bg-pink-500 hover:bg-pink-600 text-white rounded-md py-2 logout-button w-full"
+                    <button id="logout" class="bg-pink-500 hover:bg-pink-600 text-white text-2xl text-center font-semibold rounded-md py-2 w-full"
                         onclick="">Logout</button>
                 </div>
             </div>

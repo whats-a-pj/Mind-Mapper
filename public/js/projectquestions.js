@@ -15,14 +15,13 @@ var userTitle = titleTxtArea.value;
 var userStory = userStoryTxt.value;
 var wireFrame = wireFrameTxt.value;
 var notes = notesTxt.value;
-console.log(userTitle);
+
 fetch('/submitTitle', {
     method: 'POST',
     body: JSON.stringify({ title: userTitle, acceptance_criteria: userStory, wireframe_link: wireFrame, note: notes }),
     headers: {
         'Content-Type': 'application/json'
         }
-    })
-//this is to go INTO dashboard
-// console.log(userTitle);
-});
+    }).then(function() {document.location.replace('/dashboard');
+        });
+    });
