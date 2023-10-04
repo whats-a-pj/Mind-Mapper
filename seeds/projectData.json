@@ -1,8 +1,14 @@
 [
-    {
-        "title": "exampletime",
-        "acceptance_criteria": "Example Project Title",
-        "note": "idk if we want to add like the questions inputs here or like maybe the mind maps bubbles lol",
-        "wireframe_link": "snipppet"
-    }
+	{
+		"title": "exampletime",
+		"acceptance_criteria": "Example Project Title",
+		"note": "idk if we want to add like the questions inputs here or like maybe the mind maps bubbles lol",
+		"wireframe_link": "snipppet"
+	},
+	{
+		"title": "test",
+		"acceptance_criteria": "test",
+		"note": "test",
+		"wireframe_link": "test"
+	}
 ]
