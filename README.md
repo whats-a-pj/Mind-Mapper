@@ -2,7 +2,7 @@
 
 ## User Story
 As a web developer, I want an easy to use application to stay organized and productive when I am  working with a team on a large project, so that I can create a game plan to reach an MVP in a short amount of time.
-[Deployed Site](https://mind-mapper-production.up.railway.app/login)
+[Deployed Site](https://mind-mapper.up.railway.app/login)
 
 ## Motivations
 
