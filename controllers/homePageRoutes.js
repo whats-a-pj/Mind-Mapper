@@ -155,7 +155,7 @@ router.get('/renderTitle', withAuth, async (req, res) => {
         if (showTitle) {
             const inputTitleData = showTitle.get({ plain: true });
 console.log(inputTitleData)
-            res.render('/dashboard', {
+            res.render('dashboard', {
                 ...inputTitleData,
                 logged_in: true
             });
