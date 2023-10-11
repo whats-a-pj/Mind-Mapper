@@ -78,9 +78,9 @@ router.get('/login', (req, res) => {
 
 router.get('/projectquestions', withAuth, async (req, res) => {
     try {
-        const codeSnips = await MindMap.findByPk(req.session.user_id, {
+        const codeSnips = await User.findByPk(req.session.user_id, {
             attributes: { exclude: ['password'] },
-            include: [{ model: User }]
+            include: [{ model: MindMap }]
         })
 
         const codeSnippetsData = codeSnips.get({ plain: true });
